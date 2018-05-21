@@ -1,0 +1,32 @@
+/* -- Kolom grup untuk form input -- */
+.coloumn-group {
+}
+.coloumn-group .form-group {
+	display: inline-block;;
+}
+.coloumn-group .form-group input {
+	width: 60px;
+}
+
+/* -- Title style -- */
+.form-title {
+	font-size: 14px;
+}
+
+.page-login-v2 {
+	background: #3f51b5;
+}
+
+.panel-form-action {
+	background: #fbfbfb;
+    padding: 15px 25px 0 !important;
+}
+
+.panel-chart-home {
+	padding-right: 20px;
+}
+
+.list-radio-inline div {
+	display: inline-block;
+	margin-right: 10px;
+}

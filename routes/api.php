@@ -1,0 +1,30 @@
+<?php
+
+use Illuminate\Http\Request;
+
+/*
+|--------------------------------------------------------------------------
+| API Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register API routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| is assigned the "api" middleware group. Enjoy building your API!
+|
+*/
+
+Route::middleware('auth:api')->get('/user', function (Request $request) {
+    return $request->user();
+});
+
+Route::get('/semester', 'SemesterController@getData')->name('semester.get');
+Route::post('/semester', 'SemesterController@store')->name('semester.store');
+Route::get('/semester/{id}', 'SemesterController@edit')->name('semester.edit');
+Route::post('/semester/update', 'SemesterController@update')->name('semester.update');
+Route::delete('/semester/{id}', 'SemesterController@delete')->name('semester.delete');
+
+Route::get('/jurusan', 'JurusanController@getData')->name('jurusan.get');
+Route::post('/jurusan', 'JurusanController@store')->name('jurusan.store');
+Route::get('/jurusan/{k_jursan}', 'JurusanController@edit')->name('jurusan.edit');
+Route::post('/jurusan/update', 'JurusanController@update')->name('jurusan.update');
+Route::delete('/jurusan/{k_jursan}', 'JurusanController@delete')->name('jurusan.delete');

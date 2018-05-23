@@ -92,11 +92,11 @@
                                 <td>@{{ row.dosen.nama }}</td>
                                 <td>@{{ row.sks }}</td>
 								<td>
-									<button class="btn btn-warning btn-sm"
-										@click.prevent="edit(row.kode_mk)"
+									<a class="btn btn-warning btn-sm"
+                                        :href="'/matkul/' + row.kode_mk"
 									>
 										<i class="fa fa-edit"></i>
-									</button>
+                                    </a>
 									<button class="btn btn-danger btn-sm"
 										@click.prevent="remove(row.kode_mk)"
 										>

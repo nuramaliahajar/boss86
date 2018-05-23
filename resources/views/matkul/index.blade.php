@@ -29,11 +29,11 @@
 					<form action="#" @submit.prevent="sendData">
 						<div class="form-group">
 							<label for="">Kode Mata Kuliah</label>
-							<input type="text" v-model="kode_mk" class="form-control" required="">
+							<input type="text" v-model="kode_mk" maxlength="5" class="form-control" required="">
 						</div>
 						<div class="form-group">
 							<label for="">Mata Kuliah</label>
-							<input type="text" v-model="nama" class="form-control" required="">
+							<input type="text" v-model="nama" maxlength="25" class="form-control" required="">
                         </div>
                         <div class="form-group">
                             <label for="">Dosen</label>
@@ -43,7 +43,7 @@
                         </div>
                         <div class="form-group">
                             <label for="">SKS</label>
-                            <input type="text" v-model="sks" class="form-control" required="">
+                            <input type="text" v-model="sks" max="1" class="form-control" required="">
                         </div>
 
 						<div class="form-group">

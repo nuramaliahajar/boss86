@@ -29,6 +29,11 @@ Route::get('/jurusan/{k_jursan}', 'JurusanController@edit')->name('jurusan.edit'
 Route::post('/jurusan/update', 'JurusanController@update')->name('jurusan.update');
 Route::delete('/jurusan/{k_jursan}', 'JurusanController@delete')->name('jurusan.delete');
 
+Route::get('/matkul', 'MataKuliahController@getData')->name('matkul.get');
+Route::post('/matkul', 'MataKuliahController@store')->name('matkul.store');
+Route::delete('/matkul/{k_jursan}', 'MataKuliahController@delete')->name('matkul.delete');
+Route::get('/matkul/dosen', 'MataKuliahController@getDosen')->name('matkul.dosen');
+
 Route::get('/kelas', 'KelasController@getData')->name('kelas.get');
 Route::post('/kelas', 'KelasController@store')->name('kelas.store');
 Route::get('/kelas/{k_jursan}', 'KelasController@edit')->name('kelas.edit');

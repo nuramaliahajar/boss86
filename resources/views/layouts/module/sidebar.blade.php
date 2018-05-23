@@ -32,6 +32,11 @@
                             </a>
                         </li>
                         <li class="site-menu-item active">
+                            <a class="animsition-link" href="{{ route('matkul.index') }}">
+                                <span class="site-menu-title">Mata Kuliah</span>
+                            </a>
+                        </li>
+                        <li class="site-menu-item active">
                             <a class="animsition-link" href="{{ route('mahasiswa.index') }}">
                                 <span class="site-menu-title">Mahasiswa</span>
                             </a>

@@ -35,3 +35,7 @@ Route::put('/dosen/{nim}', 'DosenController@update')->name('dosen.update');
 
 Route::get('/jurusan', 'JurusanController@index')->name('jurusan.index');
 Route::get('/kelas', 'KelasController@index')->name('kelas.index');
+
+Route::get('/matkul', 'MataKuliahController@index')->name('matkul.index');
+Route::get('/matkul/{kode_mk}', 'MataKuliahController@edit')->name('matkul.edit');
+Route::put('/matkul/{kode_mk}', 'MataKuliahController@update')->name('matkul.update');

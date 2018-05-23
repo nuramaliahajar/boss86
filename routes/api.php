@@ -53,3 +53,4 @@ Route::get('/user/mahasiswa', 'UserController@getMahasiswa')->name('user.get_mhs
 Route::get('/user/mahasiswa/{email}', 'UserController@selectMhs')->name('user.select');
 Route::get('/user/dosen', 'UserController@dosen')->name('user.dosen');
 Route::get('/user/dosen/{email}', 'UserController@selectDosen')->name('user.select_dosen');
+Route::delete('/user/{id}', 'UserController@destroy')->name('user.destroy');

@@ -77,4 +77,11 @@ class UserController extends Controller
         ]);
         return redirect(route('user.index'))->with(['success' => 'User: ' . $user->email . ' Telah Disimpan']);
     }
+
+    public function destroy($id)
+    {
+        $user = User::findOrFail($id);
+        $user->delete();
+        return response()->json($user);
+    }
 }

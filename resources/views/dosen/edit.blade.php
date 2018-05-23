@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-	<title>Tambah Data</title>
+	<title>Edit Data</title>
 @endsection
 
 @section('css')
@@ -12,9 +12,9 @@
 	<div class="page-header">
 	  	<ol class="breadcrumb">
 	    	<li class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></li>
-	    	<li class="breadcrumb-item active">Tambah Data</li>
+	    	<li class="breadcrumb-item active">Edit Data</li>
 	  	</ol>
-  		<h1 class="page-title">Tambah Data</h1>
+  		<h1 class="page-title">Edit Data</h1>
 	</div>
 	<div class="page-content" id="dw">
 		<div class="row">

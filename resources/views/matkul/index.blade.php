@@ -42,8 +42,12 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="">SKS</label>
-                            <input type="text" v-model="sks" max="1" class="form-control" required="">
+							<label for="">SKS</label>
+							<select id="" v-model="sks" required class="form-control">
+								<option value="">Pilih</option>
+								<option value="2">2</option>
+								<option value="4">4</option>
+							</select>
                         </div>
 
 						<div class="form-group">

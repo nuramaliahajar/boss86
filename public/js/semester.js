@@ -15967,7 +15967,8 @@ var app = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
 		q: '',
 		sort: 'created_at',
 		orders: 'desc',
-		title: 'Tambah Data'
+		title: 'Tambah Data',
+		buttonTitle: 'Simpan'
 	},
 	watch: {
 		q: function q() {
@@ -15997,6 +15998,7 @@ var app = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
 						_this.button = false;
 						_this.getData();
 						_this.semester = '';
+						_this.buttonTitle = 'Simpan';
 					}, 1000);
 				}).catch(function (error) {});
 			} else {
@@ -16010,6 +16012,7 @@ var app = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
 						_this.id_semester = '';
 						_this.semester = '';
 						_this.title = 'Tambah Data';
+						_this.buttonTitle = Simpan;
 					}, 1000);
 				}).catch(function (error) {});
 			}
@@ -16026,6 +16029,7 @@ var app = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
 
 			__WEBPACK_IMPORTED_MODULE_1_axios___default.a.get('/api/semester/' + id).then(function (response) {
 				_this3.title = 'Edit Data';
+				_this3.buttonTitle = 'Edit';
 				_this3.id_semester = response.data.id;
 				_this3.semester = response.data.semester;
 			}).catch(function (error) {});

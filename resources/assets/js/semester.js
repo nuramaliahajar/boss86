@@ -29,7 +29,8 @@ var app = new Vue({
 		q: '',
 		sort: 'created_at',
 		orders: 'desc',
-		title: 'Tambah Data'
+		title: 'Tambah Data',
+		buttonTitle: 'Simpan'
 	},
 	watch: {
 		q() {
@@ -57,6 +58,7 @@ var app = new Vue({
 						this.button = false
 						this.getData()
 						this.semester = ''
+						this.buttonTitle = 'Simpan'
 					}, 1000)
 				})
 				.catch ((error) => {
@@ -74,6 +76,7 @@ var app = new Vue({
 						this.id_semester = ''
 						this.semester = ''
 						this.title = 'Tambah Data'
+						this.buttonTitle = Simpan
 					}, 1000)
 				})
 				.catch ((error) => {
@@ -95,6 +98,7 @@ var app = new Vue({
 			axios.get(`/api/semester/${id}`)
 			.then((response) => {
 				this.title = 'Edit Data'
+				this.buttonTitle = 'Edit'
 				this.id_semester = response.data.id
 				this.semester = response.data.semester
 			})

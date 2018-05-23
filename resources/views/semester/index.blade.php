@@ -37,7 +37,7 @@
 							<button class="btn btn-primary btn-sm"
 								:disabled="button"
 								>
-								@{{ button ? 'Loading...':'Simpan' }}
+								@{{ button ? 'Loading...':buttonTitle }}
 							</button>
 						</div>
 					</form>

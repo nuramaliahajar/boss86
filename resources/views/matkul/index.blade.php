@@ -29,7 +29,6 @@
 					<form action="#" @submit.prevent="sendData">
 						<div class="form-group">
 							<label for="">Kode Mata Kuliah</label>
-							<input type="hidden" class="form-control" v-model="type">
 							<input type="text" v-model="kode_mk" class="form-control" required="">
 						</div>
 						<div class="form-group">

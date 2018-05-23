@@ -27,4 +27,10 @@ Route::post('/mahasiswa', 'MahasiswaController@store')->name('mahasiswa.store');
 Route::get('/mahasiswa/{nim}', 'MahasiswaController@edit')->name('mahasiswa.edit');
 Route::put('/mahasiswa/{nim}', 'MahasiswaController@update')->name('mahasiswa.update');
 
+Route::get('/dosen', 'DosenController@index')->name('dosen.index');
+Route::get('/dosen/add', 'DosenController@add')->name('dosen.add');
+Route::post('/dosen', 'DosenController@store')->name('dosen.store');
+Route::get('/dosen/{nim}', 'DosenController@edit')->name('dosen.edit');
+Route::put('/dosen/{nim}', 'DosenController@update')->name('dosen.update');
+
 Route::get('/jurusan', 'JurusanController@index')->name('jurusan.index');

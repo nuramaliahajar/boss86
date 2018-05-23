@@ -32,3 +32,7 @@ Route::delete('/jurusan/{k_jursan}', 'JurusanController@delete')->name('jurusan.
 Route::get('/mahasiswa', 'MahasiswaController@getData')->name('mahasiswa.get');
 Route::get('/mahasiswa/{nim}', 'MahasiswaController@detail')->name('mahasiswa.detail');
 Route::delete('/mahasiswa/{nim}', 'MahasiswaController@destroy')->name('mahasiswa.destroy');
+
+Route::get('/dosen', 'DosenController@getData')->name('dosen.get');
+Route::get('/dosen/{nim}', 'DosenController@detail')->name('dosen.detail');
+Route::delete('/dosen/{nim}', 'DosenController@destroy')->name('dosen.destroy');

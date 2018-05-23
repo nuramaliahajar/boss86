@@ -14,8 +14,7 @@ class MahasiswaController extends Controller
 {
     public function index()
     {
-    	
-    	return view('mahasiswa.index', compact('mahasiswa'));
+    	return view('mahasiswa.index');
     }
 
     public function getData(Request $request)

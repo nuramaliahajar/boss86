@@ -78,6 +78,25 @@ class UserController extends Controller
         return redirect(route('user.index'))->with(['success' => 'User: ' . $user->email . ' Telah Disimpan']);
     }
 
+    public function edit($id)
+    {
+        $user = User::findOrFail($id);
+        return view('user.edit', compact('user'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $this->validate($request, [
+            'password' => 'required|string|min:6'
+        ]);
+
+        $user = User::findOrFail($id);
+        $user->update([
+            'password' => bcrypt($request->password)
+        ]);
+        return redirect(route('user.index'))->with(['success' => $user->email . ' Telah Diperbaharui']);
+    }
+
     public function destroy($id)
     {
         $user = User::findOrFail($id);

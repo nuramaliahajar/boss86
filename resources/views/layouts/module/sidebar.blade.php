@@ -31,6 +31,11 @@
                                 <span class="site-menu-title">Mahasiswa</span>
                             </a>
                         </li>
+                        <li class="site-menu-item active">
+                            <a class="animsition-link" href="{{ route('dosen.index') }}">
+                                <span class="site-menu-title">Dosen</span>
+                            </a>
+                        </li>
                     </ul>
                 </li>
                 

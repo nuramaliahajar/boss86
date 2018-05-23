@@ -32,7 +32,7 @@
 						@endcomponent
 					@endif
 
-					{!! Form::open(['route' => 'mahasiswa.store']) !!}
+					{!! Form::open(['route' => 'user.store']) !!}
 					<div class="form-group {{ $errors->has('role') ? 'has-error':'' }}">
 						<label for="">Role</label>
 						<select name="role" id="role" v-model="user.role" width="100%" class="form-control">

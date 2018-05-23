@@ -42,3 +42,4 @@ Route::put('/matkul/{kode_mk}', 'MataKuliahController@update')->name('matkul.upd
 
 Route::get('/user', 'UserController@index')->name('user.index');
 Route::get('/user/add', 'UserController@add')->name('user.add');
+Route::post('/user', 'UserController@store')->name('user.store');

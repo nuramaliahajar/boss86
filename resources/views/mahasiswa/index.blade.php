@@ -59,7 +59,7 @@
 										class="btn btn-warning btn-sm">
 										<i class="fa fa-edit"></i>
 									</a>
-									<a href="javascript.void(0)" @click.prevent="row.nim" 
+									<a href="javascript.void(0)" @click.prevent="remove(row.nim)" 
 										class="btn btn-danger btn-sm">
 										<i class="fa fa-trash"></i>
 									</a>

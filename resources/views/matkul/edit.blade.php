@@ -46,7 +46,7 @@
                         <select id="nidn" nama="nidn" required class="form-control">
                             <option value="">Pilih</option>
                             @foreach ($dosen as $row)
-                            <option value="{{ $row->nidn }}">{{ $row->nama }}</option>
+                            <option value="{{ $row->nidn }}" {{ $mata_kuliah->nidn == $row->nidn ? 'selected':'' }}>{{ $row->nama }}</option>
                             @endforeach
                         </select>
                     </div>

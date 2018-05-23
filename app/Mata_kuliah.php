@@ -13,6 +13,6 @@ class Mata_kuliah extends Model
 
     public function dosen()
     {
-        $this->belongsTo(Dosen::class, 'nidn', 'nidn');
+        return $this->belongsTo(Dosen::class, 'nidn', 'nidn');
     }
 }

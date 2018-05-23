@@ -30,11 +30,11 @@
 						<div class="form-group">
 							<label for="">Kode Jurusan</label>
 							<input type="hidden" class="form-control" v-model="type">
-							<input type="text" v-model="k_jurusan" class="form-control" required="">
+							<input type="text" maxlength="4" v-model="k_jurusan" class="form-control" required="">
 						</div>
 						<div class="form-group">
 							<label for="">Jurusan</label>
-							<input type="text" v-model="jurusan" class="form-control" required="">
+							<input type="text" maxlength="35" v-model="jurusan" class="form-control" required="">
 						</div>
 
 						<div class="form-group">

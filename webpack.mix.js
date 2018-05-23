@@ -15,3 +15,4 @@ mix.js('resources/assets/js/semester.js', 'public/js');
 mix.js('resources/assets/js/jurusan.js', 'public/js');
 mix.js('resources/assets/js/mahasiswa.js', 'public/js');
 mix.js('resources/assets/js/dosen.js', 'public/js');
+mix.js('resources/assets/js/kelas.js', 'public/js');

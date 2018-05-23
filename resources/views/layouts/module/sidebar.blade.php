@@ -27,6 +27,11 @@
                             </a>
                         </li>
                         <li class="site-menu-item active">
+                            <a class="animsition-link" href="{{ route('kelas.index') }}">
+                                <span class="site-menu-title">Kelas</span>
+                            </a>
+                        </li>
+                        <li class="site-menu-item active">
                             <a class="animsition-link" href="{{ route('mahasiswa.index') }}">
                                 <span class="site-menu-title">Mahasiswa</span>
                             </a>

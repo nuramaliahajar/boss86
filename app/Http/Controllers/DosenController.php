@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Dosen;
+use DB;
 
 class DosenController extends Controller
 {

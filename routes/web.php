@@ -34,3 +34,4 @@ Route::get('/dosen/{nim}', 'DosenController@edit')->name('dosen.edit');
 Route::put('/dosen/{nim}', 'DosenController@update')->name('dosen.update');
 
 Route::get('/jurusan', 'JurusanController@index')->name('jurusan.index');
+Route::get('/kelas', 'KelasController@index')->name('kelas.index');

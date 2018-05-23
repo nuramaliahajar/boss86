@@ -48,7 +48,12 @@
                         </li>
                     </ul>
                 </li>
-                
+                <li class="site-menu-item has-sub">
+                    <a href="{{ route('user.index') }}">
+                        <i class="site-menu-icon md-card" aria-hidden="true"></i>
+                        <span class="site-menu-title">USER</span>
+                    </a>
+                </li>
             </ul>
             <div class="site-menubar-section">
                 <h5>

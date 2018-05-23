@@ -39,3 +39,6 @@ Route::get('/kelas', 'KelasController@index')->name('kelas.index');
 Route::get('/matkul', 'MataKuliahController@index')->name('matkul.index');
 Route::get('/matkul/{kode_mk}', 'MataKuliahController@edit')->name('matkul.edit');
 Route::put('/matkul/{kode_mk}', 'MataKuliahController@update')->name('matkul.update');
+
+Route::get('/user', 'UserController@index')->name('user.index');
+Route::get('/user/add', 'UserController@add')->name('user.add');

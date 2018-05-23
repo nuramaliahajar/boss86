@@ -47,3 +47,5 @@ Route::delete('/mahasiswa/{nim}', 'MahasiswaController@destroy')->name('mahasisw
 Route::get('/dosen', 'DosenController@getData')->name('dosen.get');
 Route::get('/dosen/{nim}', 'DosenController@detail')->name('dosen.detail');
 Route::delete('/dosen/{nim}', 'DosenController@destroy')->name('dosen.destroy');
+
+Route::get('/user', 'UserController@getData')->name('user.get');

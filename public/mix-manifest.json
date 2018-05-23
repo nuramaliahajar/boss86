@@ -1,5 +1,10 @@
 {
-    "/js/semester.js": "/js/semester.js",
+    "/js/user_add.js": "/js/user_add.js",
+    "/js/user.js": "/js/user.js",
     "/js/mahasiswa.js": "/js/mahasiswa.js",
+    "/js/dosen.js": "/js/dosen.js",
+    "/js/semester.js": "/js/semester.js",
+    "/js/matkul.js": "/js/matkul.js",
+    "/js/kelas.js": "/js/kelas.js",
     "/js/jurusan.js": "/js/jurusan.js"
 }

@@ -46,7 +46,8 @@ var app = new Vue({
 		}
 	},
 	mounted() {
-		this.getData()
+        this.getData()
+        this.getDosen()
 	},
 	methods: {
 		searchingData(value) {

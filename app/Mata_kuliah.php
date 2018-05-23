@@ -10,4 +10,9 @@ class Mata_kuliah extends Model
     public $incrementing = false;
     protected $primaryKey = 'kode_mk';
     protected $table = 'mata_kuliah';
+
+    public function dosen()
+    {
+        $this->belongsTo(Dosen::class, 'nidn', 'nidn');
+    }
 }

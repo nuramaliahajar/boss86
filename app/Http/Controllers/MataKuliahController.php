@@ -20,11 +20,11 @@ class MataKuliahController extends Controller
     	$orders = $request->orders;
 
     	if (!empty($q)) {
-    		$mata_kuliah = Mata_kuliah::where('nama', 'LIKE', '%' . $q . '%')
+    		$mata_kuliah = Mata_kuliah::with('dosen')->where('nama', 'LIKE', '%' . $q . '%')
     			->orderBy($sort, $orders)
     			->paginate(10);
     	} else {
-    		$mata_kuliah = Mata_kuliah::orderBy($sort, $orders)
+    		$mata_kuliah = Mata_kuliah::with('dosen')->orderBy($sort, $orders)
     			->paginate(10);
     	}
 

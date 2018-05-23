@@ -11,4 +11,9 @@ class Dosen extends Model
     protected $primaryKey = 'nidn';
     protected $table = 'dosen';
     protected $dates = ['tgl_lahir'];
+
+    public function matkul()
+    {
+        return $this->hasOne(Mata_kuliah::class, 'nidn', 'nidn');
+    }
 }

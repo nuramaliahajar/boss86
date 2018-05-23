@@ -44,9 +44,17 @@
 						<template v-if="data.data && data.data.length > 0" slot="data">
 							<tr v-for="row in data.data" :key="row.nim">
                                 <td>#</td>
-								<td>@{{ row.nama }}</td>
+								<td>@{{ row.name }}</td>
 								<td>@{{ row.email }}</td>
-								<td></td>
+								<td v-if="row.role == 0">
+                                    Akademik
+                                </td>
+                                <td v-else-if="row.role == 1">
+                                    Mahasiswa
+                                </td>
+                                <td v-else>
+                                    Dosen
+                                </td>
 								<td>
 									<a :href="'/user/' + row.id"
 										class="btn btn-warning btn-sm">

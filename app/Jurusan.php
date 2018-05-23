@@ -9,5 +9,5 @@ class Jurusan extends Model
     protected $fillable = ['k_jurusan', 'jurusan'];
     public $incrementing = false;
     protected $primaryKey = 'k_jurusan';
-    protected $table = 'Jurusan';
+    protected $table = 'jurusan';
 }

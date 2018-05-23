@@ -3,19 +3,22 @@ import axios from 'axios'
 import VueSweetalert2 from 'vue-sweetalert2'
 import DataTable from './components/DataTable.vue'
 import Pagination from './components/Pagination.vue'
+import ModalTab from './components/ModalTab.vue'
 
 Vue.component('data-table', DataTable)
 Vue.component('pagination', Pagination)
 Vue.use(VueSweetalert2)
+Vue.component('modal-tab', ModalTab)
 
 var app = new Vue({
 	el: '#dw',
 	data: {
-		id_semester: '',
-		semester: '',
 		columns: [
-			{ title: '#', field: 'id' },
-			{ title: 'Semester', field: 'semester' },
+			{ title: 'NIM', field: 'nim' },
+            { title: 'Nama Lengkap', field: 'nama' },
+            { title: 'Telpon', field: 'no_tlpn' },
+            { title: 'Jurusan', field: 'k_jurusan' },
+            { title: 'Email', field: 'email' },
 			{ title: 'Action', filed: 'action' }
 		],
 		data: {
@@ -25,11 +28,22 @@ var app = new Vue({
 			to: 0,
 			current_page: 1
 		},
-		button: false,
 		q: '',
 		sort: 'created_at',
-		orders: 'desc',
-		title: 'Tambah Data'
+        orders: 'desc',
+        isModalVisible: false,
+        person: {
+            name: '',
+            nama: '',
+            jurusan: {
+                jurusan: ''
+            },
+            mahasiswa_semester: {},
+            tgl_lahir: '',
+            alamat: '',
+            no_tlpn: '',
+            email: ''
+        }
 	},
 	watch: {
 		q() {
@@ -43,47 +57,24 @@ var app = new Vue({
 		this.getData()
 	},
 	methods: {
+        showModal(nim) {
+            axios.get(`/api/mahasiswa/${nim}`)
+            .then ((response) => {
+                this.person = response.data
+                this.isModalVisible = true;
+            })
+            .catch ((error) => {
+
+            })
+        },
+        closeModal() {
+            this.isModalVisible = false;
+        },
 		searchingData(value) {
 			this.q = value
 		},
-		sendData() {
-			this.button = true
-			if (this.id_semester === '') {
-				axios.post('/api/semester', {
-					semester: this.semester
-				})
-				.then((response) => {
-					setTimeout(() => {
-						this.button = false
-						this.getData()
-						this.semester = ''
-					}, 1000)
-				})
-				.catch ((error) => {
-
-				})
-			} else {
-				axios.post('/api/semester/update', {
-					id: this.id_semester,
-					semester: this.semester
-				})
-				.then((response) => {
-					setTimeout(() => {
-						this.button = false
-						this.getData()
-						this.id_semester = ''
-						this.semester = ''
-						this.title = 'Tambah Data'
-					}, 1000)
-				})
-				.catch ((error) => {
-
-				})
-			}
-			
-		},
 		getData() {
-			axios.get(`/api/semester?page=${this.data.current_page}&q=${this.q}&sort=${this.sort}&orders=${this.orders}`)
+			axios.get(`/api/mahasiswa?page=${this.data.current_page}&q=${this.q}&sort=${this.sort}&orders=${this.orders}`)
 			.then((response) => {
 				this.data = response.data
 			})
@@ -91,18 +82,7 @@ var app = new Vue({
 
 			})
 		},
-		edit(id) {
-			axios.get(`/api/semester/${id}`)
-			.then((response) => {
-				this.title = 'Edit Data'
-				this.id_semester = response.data.id
-				this.semester = response.data.semester
-			})
-			.catch((error) => {
-
-			})
-		},
-		remove(id) {
+		remove(nim) {
 			this.$swal({
 				title: 'Kamu Yakin?',
 				text: 'Kamu Tidak Dapat Mengembalikan Tidakan Ini!',
@@ -123,7 +103,7 @@ var app = new Vue({
 			})
 			.then((result) => {
 				if (result.value) {
-					axios.delete(`/api/semester/${id}`)
+					axios.delete(`/api/mahasiswa/${nim}`)
 					.then((response) => {
 						this.getData()
 					})

@@ -2,8 +2,10 @@ import Vue from 'vue'
 import axios from 'axios'
 import VueSweetalert2 from 'vue-sweetalert2'
 import DataTable from './components/DataTable.vue'
+import Pagination from './components/Pagination.vue'
 
 Vue.component('data-table', DataTable)
+Vue.component('pagination', Pagination)
 Vue.use(VueSweetalert2)
 
 var app = new Vue({

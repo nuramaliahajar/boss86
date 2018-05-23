@@ -24,5 +24,7 @@ Route::get('/semester', 'SemesterController@index')->name('semester.index');
 Route::get('/mahasiswa', 'MahasiswaController@index')->name('mahasiswa.index');
 Route::get('/mahasiswa/add', 'MahasiswaController@add')->name('mahasiswa.add');
 Route::post('/mahasiswa', 'MahasiswaController@store')->name('mahasiswa.store');
+Route::get('/mahasiswa/{nim}', 'MahasiswaController@edit')->name('mahasiswa.edit');
+Route::put('/mahasiswa/{nim}', 'MahasiswaController@update')->name('mahasiswa.update');
 
 Route::get('/jurusan', 'JurusanController@index')->name('jurusan.index');

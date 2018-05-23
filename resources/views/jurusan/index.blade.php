@@ -100,6 +100,9 @@
 							</tr>
 						</template>
 					</data-table>
+					<div class="pull-right">
+						<pagination :pagination="data" :offset="4" @paginate="getData" />
+					</div>
 					@slot('footer')
 
 					@endslot

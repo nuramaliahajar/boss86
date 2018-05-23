@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-	<title>Tambah Data</title>
+	<title>Edit Data</title>
 @endsection
 
 @section('css')
@@ -12,9 +12,9 @@
 	<div class="page-header">
 	  	<ol class="breadcrumb">
 	    	<li class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></li>
-	    	<li class="breadcrumb-item active">Tambah Data</li>
+	    	<li class="breadcrumb-item active">Edit Data</li>
 	  	</ol>
-  		<h1 class="page-title">Tambah Data</h1>
+  		<h1 class="page-title">Edit Data</h1>
 	</div>
 	<div class="page-content" id="dw">
 		<div class="row">
@@ -32,30 +32,43 @@
 						@endcomponent
 					@endif
 
-					{!! Form::open(['route' => 'mahasiswa.store']) !!}
+					{!! Form::model($mahasiswa, ['url' => '/mahasiswa/' . $mahasiswa->nim, 'method' => 'PUT']) !!}
 					<div class="form-group {{ $errors->has('nim') ? 'has-error':'' }}">
 						<label for="">Nim</label>
-						<input type="text" name="nim" maxlength="12" class="form-control" required="">
+                        <input type="text" 
+                            value="{{ $mahasiswa->nim or old('nim') }}" 
+                            name="nim" maxlength="12" 
+                            class="form-control" required=""
+                            readonly
+                            >
 						<p class="text-danger">{{ $errors->first('nim') }}</p>
 					</div>
 					<div class="form-group {{ $errors->has('nama') ? 'has-error':'' }}">
 						<label for="">Nama Lengkap</label>
-						<input type="text" name="nama" maxlength="35" class="form-control" required="">
+                        <input type="text" 
+                            value="{{ $mahasiswa->nama or old('nama') }}" 
+                            name="nama" maxlength="35" 
+                            class="form-control" 
+                            required="">
 						<p class="text-danger">{{ $errors->first('nama') }}</p>
 					</div>
 					<div class="form-group {{ $errors->has('alamat') ? 'has-error':'' }}">
 						<label for="">Alamat</label>
-						<textarea name="alamat" id="" cols="5" rows="5" class="form-control"></textarea>
+						<textarea name="alamat" id="" cols="5" rows="5" class="form-control">{{ $mahasiswa->alamat or old('alamat') }}</textarea>
 						<p class="text-danger">{{ $errors->first('alamat') }}</p>
 					</div>
 					<div class="form-group {{ $errors->has('tgl_lahir') ? 'has-error':'' }}">
 						<label for="">Tgl Lahir</label>
-						<input type="text" id="tgl_lahir" name="tgl_lahir" class="form-control" required="">
+                        <input type="text" value="{{ $mahasiswa->tgl_lahir->format('m/d/Y') }}" 
+                            id="tgl_lahir"
+                            name="tgl_lahir" 
+                            class="form-control" 
+                            required="">
 						<p class="text-danger">{{ $errors->first('tgl_lahir') }}</p>
 					</div>
 					<div class="form-group {{ $errors->has('no_tlpn') ? 'has-error':'' }}">
 						<label for="">No Telpon</label>
-						<input type="text" name="no_tlpn" maxlength="12" class="form-control" required="">
+						<input type="text" value="{{ $mahasiswa->no_tlpn or old('no_tlpn') }}" name="no_tlpn" maxlength="12" class="form-control" required="">
 						<p class="text-danger">{{ $errors->first('no_tlpn') }}</p>
 					</div>
 					<div class="form-group {{ $errors->has('k_jurusan') ? 'has-error':'' }}">
@@ -63,24 +76,14 @@
 						<select name="k_jurusan" id="k_jurusan" class="form-control" required="">
 							<option value="">Pilih</option>
 							@foreach ($jurusan as $value)
-							<option value="{{ $value->k_jurusan }}">{{ $value->jurusan }}</option>
-							@endforeach
-						</select>
-						<p class="text-danger">{{ $errors->first('k_jurusan') }}</p>
-					</div>
-					<div class="form-group {{ $errors->has('semester_id') ? 'has-error':'' }}">
-						<label for="">Semester</label>
-						<select name="semester_id" id="semester_id" class="form-control" required="">
-							<option value="">Pilih</option>
-							@foreach ($semester as $value)
-							<option value="{{ $value->id }}">{{ $value->semester }}</option>
+                            <option value="{{ $value->k_jurusan }}" {{ $mahasiswa->k_jurusan == $value->k_jurusan ? 'selected':'' }}>{{ $value->jurusan }}</option>
 							@endforeach
 						</select>
 						<p class="text-danger">{{ $errors->first('k_jurusan') }}</p>
 					</div>
 					<div class="form-group {{ $errors->has('email') ? 'has-error':'' }}">
 						<label for="">Email</label>
-						<input type="email" name="email" maxlength="100" class="form-control" required="">
+						<input type="email" value="{{ $mahasiswa->email or old('email') }}" name="email" maxlength="100" class="form-control" required="">
 						<p class="text-danger">{{ $errors->first('email') }}</p>
 					</div>
 					<div class="form-group">
@@ -100,8 +103,7 @@
 
 @section('js')
 	<script>
-		$('#k_jurusan').select2();
-		$('#semester_id').select2();
-		$('#tgl_lahir').datepicker();
+        $('#k_jurusan').select2();
+        $('#tgl_lahir').datepicker();
 	</script>
 @endsection

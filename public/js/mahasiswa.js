@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 44);
+/******/ 	return __webpack_require__(__webpack_require__.s = 46);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -15921,14 +15921,16 @@ if (false) {
 /***/ }),
 /* 42 */,
 /* 43 */,
-/* 44 */
+/* 44 */,
+/* 45 */,
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(45);
+module.exports = __webpack_require__(47);
 
 
 /***/ }),
-/* 45 */
+/* 47 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -15942,6 +15944,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_DataTable_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__components_DataTable_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_Pagination_vue__ = __webpack_require__(48);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_Pagination_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__components_Pagination_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_ModalTab_vue__ = __webpack_require__(58);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_ModalTab_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__components_ModalTab_vue__);
+
 
 
 
@@ -15951,14 +15956,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('data-table', __WEBPACK_IMPORTED_MODULE_3__components_DataTable_vue___default.a);
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('pagination', __WEBPACK_IMPORTED_MODULE_4__components_Pagination_vue___default.a);
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_2_vue_sweetalert2__["a" /* default */]);
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('modal-tab', __WEBPACK_IMPORTED_MODULE_5__components_ModalTab_vue___default.a);
 
 var app = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
 	el: '#dw',
 	data: {
-		k_jurusan: '',
-		jurusan: '',
-		type: '',
-		columns: [{ title: '#', field: 'id' }, { title: 'Kode Jurusan', field: 'k_jurusan' }, { title: 'Jurusan', field: 'jurusan' }, { title: 'Action', filed: 'action' }],
+		columns: [{ title: 'NIM', field: 'nim' }, { title: 'Nama Lengkap', field: 'nama' }, { title: 'Telpon', field: 'no_tlpn' }, { title: 'Jurusan', field: 'k_jurusan' }, { title: 'Email', field: 'email' }, { title: 'Action', filed: 'action' }],
 		data: {
 			total: 0,
 			per_page: 2,
@@ -15966,11 +15969,22 @@ var app = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
 			to: 0,
 			current_page: 1
 		},
-		button: false,
 		q: '',
 		sort: 'created_at',
 		orders: 'desc',
-		title: 'Tambah Data'
+		isModalVisible: false,
+		person: {
+			name: '',
+			nama: '',
+			jurusan: {
+				jurusan: ''
+			},
+			mahasiswa_semester: {},
+			tgl_lahir: '',
+			alamat: '',
+			no_tlpn: '',
+			email: ''
+		}
 	},
 	watch: {
 		q: function q() {
@@ -15985,61 +15999,29 @@ var app = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
 	},
 
 	methods: {
-		searchingData: function searchingData(value) {
-			this.q = value;
-		},
-		sendData: function sendData() {
+		showModal: function showModal(nim) {
 			var _this = this;
 
-			this.button = true;
-			if (this.type === '') {
-				__WEBPACK_IMPORTED_MODULE_1_axios___default.a.post('/api/jurusan', {
-					k_jurusan: this.k_jurusan,
-					jurusan: this.jurusan
-				}).then(function (response) {
-					setTimeout(function () {
-						_this.button = false;
-						_this.getData();
-						_this.jurusan = '';
-						_this.k_jurusan = '';
-						_this.type = '';
-					}, 1000);
-				}).catch(function (error) {});
-			} else {
-				__WEBPACK_IMPORTED_MODULE_1_axios___default.a.post('/api/jurusan/update', {
-					k_jurusan: this.k_jurusan,
-					jurusan: this.jurusan
-				}).then(function (response) {
-					setTimeout(function () {
-						_this.button = false;
-						_this.getData();
-						_this.jurusan = '';
-						_this.k_jurusan = '';
-						_this.type = '';
-						_this.title = 'Tambah Data';
-					}, 1000);
-				}).catch(function (error) {});
-			}
+			__WEBPACK_IMPORTED_MODULE_1_axios___default.a.get('/api/mahasiswa/' + nim).then(function (response) {
+				_this.person = response.data;
+				_this.isModalVisible = true;
+			}).catch(function (error) {});
+		},
+		closeModal: function closeModal() {
+			this.isModalVisible = false;
+		},
+		searchingData: function searchingData(value) {
+			this.q = value;
 		},
 		getData: function getData() {
 			var _this2 = this;
 
-			__WEBPACK_IMPORTED_MODULE_1_axios___default.a.get('/api/jurusan?page=' + this.data.current_page + '&q=' + this.q + '&sort=' + this.sort + '&orders=' + this.orders).then(function (response) {
+			__WEBPACK_IMPORTED_MODULE_1_axios___default.a.get('/api/mahasiswa?page=' + this.data.current_page + '&q=' + this.q + '&sort=' + this.sort + '&orders=' + this.orders).then(function (response) {
 				_this2.data = response.data;
 			}).catch(function (error) {});
 		},
-		edit: function edit(k_jurusan) {
+		remove: function remove(nim) {
 			var _this3 = this;
-
-			__WEBPACK_IMPORTED_MODULE_1_axios___default.a.get('/api/jurusan/' + k_jurusan).then(function (response) {
-				_this3.title = 'Edit Data';
-				_this3.type = 'update';
-				_this3.k_jurusan = response.data.k_jurusan;
-				_this3.jurusan = response.data.jurusan;
-			}).catch(function (error) {});
-		},
-		remove: function remove(k_jurusan) {
-			var _this4 = this;
 
 			this.$swal({
 				title: 'Kamu Yakin?',
@@ -16058,12 +16040,12 @@ var app = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
 					});
 				},
 				allowOutsideClick: function allowOutsideClick() {
-					return !_this4.$swal.isLoading();
+					return !_this3.$swal.isLoading();
 				}
 			}).then(function (result) {
 				if (result.value) {
-					__WEBPACK_IMPORTED_MODULE_1_axios___default.a.delete('/api/jurusan/' + k_jurusan).then(function (response) {
-						_this4.getData();
+					__WEBPACK_IMPORTED_MODULE_1_axios___default.a.delete('/api/mahasiswa/' + nim).then(function (response) {
+						_this3.getData();
 					}).catch(function (error) {});
 				}
 			});
@@ -16072,8 +16054,6 @@ var app = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
 });
 
 /***/ }),
-/* 46 */,
-/* 47 */,
 /* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -16251,6 +16231,177 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-3895afde", module.exports)
+  }
+}
+
+/***/ }),
+/* 51 */,
+/* 52 */,
+/* 53 */,
+/* 54 */,
+/* 55 */,
+/* 56 */,
+/* 57 */,
+/* 58 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(39)
+/* script */
+var __vue_script__ = __webpack_require__(59)
+/* template */
+var __vue_template__ = __webpack_require__(60)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/ModalTab.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-338d16df", Component.options)
+  } else {
+    hotAPI.reload("data-v-338d16df", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 59 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    methods: {
+        close: function close() {
+            this.$emit('close');
+        }
+    }
+});
+
+/***/ }),
+/* 60 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    {
+      staticClass: "modal fade show",
+      staticStyle: {
+        display: "block",
+        "background-color": "rgba(0, 0, 0, .5",
+        transition: "opacity .3s ease"
+      },
+      attrs: {
+        id: "exampleTabs",
+        "aria-hidden": "true",
+        "aria-labelledby": "exampleModalTabs",
+        role: "dialog",
+        tabindex: "-1"
+      }
+    },
+    [
+      _c("div", { staticClass: "modal-dialog modal-simple" }, [
+        _c("div", { staticClass: "modal-content" }, [
+          _c("div", { staticClass: "modal-header" }, [
+            _c(
+              "button",
+              {
+                staticClass: "close",
+                attrs: {
+                  type: "button",
+                  "data-dismiss": "modal",
+                  "aria-label": "Close"
+                },
+                on: { click: _vm.close }
+              },
+              [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+            ),
+            _vm._v(" "),
+            _c(
+              "h4",
+              { staticClass: "modal-title", attrs: { id: "exampleModalTabs" } },
+              [_vm._t("title")],
+              2
+            )
+          ]),
+          _vm._v(" "),
+          _c(
+            "ul",
+            {
+              staticClass: "nav nav-tabs nav-tabs-line",
+              attrs: { role: "tablist" }
+            },
+            [_vm._m(0), _vm._v(" "), _vm._t("menu")],
+            2
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "modal-body" }, [_vm._t("content")], 2)
+        ])
+      ])
+    ]
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "li",
+      { staticClass: "nav-item", attrs: { role: "presentation" } },
+      [
+        _c(
+          "a",
+          {
+            staticClass: "nav-link active",
+            attrs: {
+              "data-toggle": "tab",
+              href: "#home",
+              "aria-controls": "home",
+              role: "tab"
+            }
+          },
+          [_vm._v("Home")]
+        )
+      ]
+    )
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-338d16df", module.exports)
   }
 }
 

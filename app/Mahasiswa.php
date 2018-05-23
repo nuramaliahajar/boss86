@@ -19,6 +19,7 @@ class Mahasiswa extends Model
 
     public function mahasiswa_semester()
     {
-    	return $this->hasManyThrough(Semester::class, Mahasiswa_semester::class, 'semester_id', 'nim');
+        return $this->belongsToMany(Semester::class, 'mahasiswa_semester', 'nim', 'semester_id', 'nim', 'id')
+            ->withPivot('nim', 'semester_id', 'status');
     }
 }

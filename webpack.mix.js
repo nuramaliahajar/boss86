@@ -13,3 +13,4 @@ let mix = require('laravel-mix');
 
 mix.js('resources/assets/js/semester.js', 'public/js');
 mix.js('resources/assets/js/jurusan.js', 'public/js');
+mix.js('resources/assets/js/mahasiswa.js', 'public/js');

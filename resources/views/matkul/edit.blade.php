@@ -35,7 +35,7 @@
 					{!! Form::model($mata_kuliah, ['url' => '/matkul/' . $mata_kuliah->kode_mk, 'method' => 'PUT']) !!}
 					<div class="form-group">
                         <label for="">Kode Mata Kuliah</label>
-                        <input type="text" name="kode_mk" value="{{ $mata_kuliah->kode_mk }}" class="form-control" required="">
+                        <input type="text" name="kode_mk" readonly="" value="{{ $mata_kuliah->kode_mk }}" class="form-control" required="">
                     </div>
                     <div class="form-group">
                         <label for="">Mata Kuliah</label>

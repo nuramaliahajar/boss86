@@ -65,6 +65,13 @@ class MataKuliahController extends Controller
 
     public function update(Request $request, $kode_mk)
     {
+        $this->validate($request, [
+    		'kode_mk' => 'required|exists:mata_kuliah,kode_mk',
+            'nama' => 'required',
+            'nidn' => 'required|exists:dosen,nidn',
+            'sks' => 'required'
+        ]);
+        
     	$mata_kuliah = Mata_kuliah::findOrFail($request->kode_mk);
     	$mata_kuliah->update([
             'nama' => $request->nama,

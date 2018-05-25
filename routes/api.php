@@ -17,6 +17,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::get('/transaksi/barcode/{barcode}', 'TransaksiController@selectBarcode')->name('transaksi.selectBarcode');
+
 Route::get('/semester', 'SemesterController@getData')->name('semester.get');
 Route::post('/semester', 'SemesterController@store')->name('semester.store');
 Route::get('/semester/{id}', 'SemesterController@edit')->name('semester.edit');

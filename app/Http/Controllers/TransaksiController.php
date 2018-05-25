@@ -8,16 +8,26 @@ use App\Jurusan;
 use App\Dosen;
 use App\Kelas;
 use App\Semester;
-use Picqer\Barcode\BarcodeGeneratorPNG;
-
+use CodeItNow\BarcodeBundle\Utils\BarcodeGenerator;
 
 class TransaksiController extends Controller
 {
     public function index()
     {
         $transaksi = Transaksi::orderBy('created_at', 'ASC')->paginate(10);
-        $generator = new \Picqer\Barcode\BarcodeGeneratorPNG();
         return view('transaksi.index', compact('transaksi'));
+    }
+
+    public function selectBarcode($barocde)
+    {
+        $barcode = new BarcodeGenerator();
+        $barcode->setText($barcode);
+        $barcode->setType(BarcodeGenerator::Code128);
+        $barcode->setScale(2);
+        $barcode->setThickness(25);
+        $barcode->setFontSize(10);
+        $code = $barcode->generate();
+        return $code;
     }
 
     public function add()

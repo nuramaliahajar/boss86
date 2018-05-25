@@ -105,7 +105,7 @@
 					<h4 class="modal-title">Show Barcode</h4>
 				</div>
 				<div class="modal-body">
-					<img src="" />
+					<div id="displayBarcode"></div>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -117,9 +117,16 @@
 @endsection
 
 @section('js')
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
 	<script>
-		function show() {
-			$('#showBarcode').modal('show');
+		function show(barcode) {
+			axios.get('/api/transaksi/barcode/' + barcode)
+			.then((response) => {
+				setTimeout(() => {
+					$('#displayBarcode').append('<img src="data:image/png;base64,' + response.data + '" />')
+					$('#showBarcode').modal('show');
+				}, 500)
+			})
 		}
 	</script>
 @endsection

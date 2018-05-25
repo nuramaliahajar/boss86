@@ -27,7 +27,7 @@ class TransaksiController extends Controller
         $barcode->setThickness(25);
         $barcode->setFontSize(10);
         $code = $barcode->generate();
-        return view('transaksi.view', compact('code'));
+        return $code;
     }
 
     public function add()

@@ -8,12 +8,15 @@ use App\Jurusan;
 use App\Dosen;
 use App\Kelas;
 use App\Semester;
+use Picqer\Barcode\BarcodeGeneratorPNG;
+
 
 class TransaksiController extends Controller
 {
     public function index()
     {
         $transaksi = Transaksi::orderBy('created_at', 'ASC')->paginate(10);
+        $generator = new \Picqer\Barcode\BarcodeGeneratorPNG();
         return view('transaksi.index', compact('transaksi'));
     }
 

@@ -67,7 +67,8 @@
 								<td>{{ $row->semester->semester }}</td>
 								<td>{{ $row->created_at }}</td>
 								<td>
-									<a href="{{ url('transaksi/' . $row->barcode) }}" 
+									<a href="#"
+										oncClick="show({{ $row->barcode }})"
 										class="btn btn-info btn-sm">
 										<i class="fa fa-eye"></i>
 									</a>
@@ -91,4 +92,32 @@
 			</div>
 		</div>
 	</div>
+
+	<div class="modal fade modal-fade-in-scale-up show" id="showbarcode" aria-labelledby="exampleModalTitle" role="dialog" tabindex="-1" style="display: block; padding-right: 15px;">
+		<div class="modal-dialog modal-simple">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">×</span>
+					</button>
+					<h4 class="modal-title">Show Barcode</h4>
+				</div>
+				<div class="modal-body">
+					<img :src="'data:image/png;base64,' + product.encrypt_barcode" />
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary">Save changes</button>
+				</div>
+			</div>
+		</div>
+	</div>
+@endsection
+
+@section('js')
+	<script>
+		function show(barcode) {
+			$('#showbarcode').modal('show');
+		}
+	</script>
 @endsection

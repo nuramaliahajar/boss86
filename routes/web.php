@@ -48,3 +48,4 @@ Route::post('/user', 'UserController@store')->name('user.store');
 
 Route::get('/transaksi', 'TransaksiController@index')->name('transaksi.index');
 Route::get('/transaksi/add', 'TransaksiController@add')->name('transaksi.add');
+Route::post('/transaksi', 'TransaksiController@store')->name('transaksi.store');

@@ -29,6 +29,12 @@
 						@component('components.alert', ['type' => 'success'])
 							{!! session('success') !!}
 						@endcomponent
+                    @endif
+                    
+                    @if (session('error'))
+						@component('components.alert', ['type' => 'danger'])
+							{!! session('error') !!}
+						@endcomponent
 					@endif
 
 					@if ($errors->all())
@@ -41,6 +47,7 @@
 						@endcomponent
 					@endif
 
+                    {!! Form::open(['route' => 'transaksi.store']) !!}
 					<div class="form-group">
                         <label for="">Jurusan</label>
                         <select name="k_jurusan" id="k_jurusan" class="form-control" required>
@@ -81,6 +88,12 @@
                         </select>
                         <p class="text-danger">{{ $errors->first('semester_id') }}</p>
                     </div>
+                    <div class="form-group">
+                        <button class="btn btn-info btn-sm">
+                            <i class="fa fa-send"></i> Generate
+                        </button>
+                    </div>
+                    {!! Form::close() !!}
 					@slot('footer')
 
 					@endslot

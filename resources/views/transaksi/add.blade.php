@@ -111,11 +111,5 @@
 @endsection
 
 @section('js')
-    <script>
-        $('#k_jurusan').select2();
-        $('#nidn').select2();
-        $('#kode_kls').select2();
-        $('#semester_id').select2();
-    </script>
     <script src="{{ asset('js/transaksi_add.js') }}"></script>
 @endsection

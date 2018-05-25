@@ -18,10 +18,11 @@ class TransaksiController extends Controller
         return view('transaksi.index', compact('transaksi'));
     }
 
-    public function selectBarcode($barocde)
+    public function selectBarcode($barcode)
     {
+        $getCode = $barcode;
         $barcode = new BarcodeGenerator();
-        $barcode->setText($barcode);
+        $barcode->setText($getCode);
         $barcode->setType(BarcodeGenerator::Code128);
         $barcode->setScale(2);
         $barcode->setThickness(25);

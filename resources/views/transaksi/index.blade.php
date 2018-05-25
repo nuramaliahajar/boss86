@@ -52,19 +52,26 @@
                                 <th>Dosen</th>
                                 <th>Kelas</th>
                                 <th>Semester</th>
-                                <th></th>
+								<th></th>
+								<th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
                             @if ($transaksi->count() > 0)
                             @foreach ($transaksi as $row)
 							<tr>
-								<td></td>
+								<td><strong>#{{ $row->barcode }}</strong></td>
 								<td>{{ $row->jurusan->jurusan }}</td>
-								<td>{{ $row->dosen->dosen }} <sup>{{ $row->dosen->nidn }}</sup></td>
+								<td>{{ ucfirst($row->dosen->nama) }} <sup>{{ $row->dosen->nidn }}</sup></td>
 								<td>{{ $row->kelas->kelas }}</td>
 								<td>{{ $row->semester->semester }}</td>
 								<td>{{ $row->created_at }}</td>
+								<td>
+									<a href="{{ url('transaksi/' . $row->barcode) }}" 
+										class="btn btn-info btn-sm">
+										<i class="fa fa-eye"></i>
+									</a>
+								</td>
 							</tr>
                             @endforeach
                             @else

@@ -123,7 +123,7 @@
 			axios.get('/api/transaksi/barcode/' + barcode)
 			.then((response) => {
 				setTimeout(() => {
-					$('#displayBarcode').append('<img src="data:image/png;base64,' + response.data + '" />')
+					$('#displayBarcode').append('<p>' + response.data + '</p>')
 					$('#showBarcode').modal('show');
 				}, 500)
 			})

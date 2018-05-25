@@ -8,6 +8,7 @@ use App\Jurusan;
 use App\Dosen;
 use App\Kelas;
 use App\Semester;
+use App\Mata_kuliah;
 use CodeItNow\BarcodeBundle\Utils\BarcodeGenerator;
 
 class TransaksiController extends Controller

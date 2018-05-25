@@ -30,7 +30,7 @@ class TransaksiController extends Controller
         $barcode->setFontSize(10);
         $code = $barcode->generate();
 
-        $transaksi = Transaksi::with('dosen', 'kelas')
+        $transaksi = Transaksi::with('dosen', 'kelas', 'semester')
             ->where('barcode', $getCode)->first();
         $matkul = Mata_kuliah::where('nidn', $transaksi->nidn)->where('kode_mk', $transaksi->kode_mk)->first();
         $data = [

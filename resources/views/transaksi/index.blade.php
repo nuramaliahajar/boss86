@@ -126,6 +126,11 @@
 									<td></td>
 									<td class="kelas"></td>
 								</tr>
+								<tr>
+									<th>Semester</th>
+									<td></td>
+									<td class="semester"></td>
+								</tr>
 							</table>
 						</div>
 					</div>
@@ -151,6 +156,7 @@
 					$('.dosen').text(response.data.transaksi.dosen.nama)
 					$('.matkul').text(response.data.matkul.nama)
 					$('.kelas').text(response.data.transaksi.kelas.kelas)
+					$('.semester').text(response.data.transaksi.semester.semester)
 					$('#showBarcode').modal('show');
 				}, 500)
 			})

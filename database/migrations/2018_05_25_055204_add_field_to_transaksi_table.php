@@ -13,7 +13,7 @@ class AddFieldToTransaksiTable extends Migration
      */
     public function up()
     {
-        Schema::table('tranksaksi', function(Blueprint $table) {
+        Schema::table('transaksi', function(Blueprint $table) {
             $table->string('kode_mk', 5)->after('nidn');
         });
     }

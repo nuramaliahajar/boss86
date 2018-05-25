@@ -67,8 +67,8 @@
 								<td>{{ $row->semester->semester }}</td>
 								<td>{{ $row->created_at }}</td>
 								<td>
-									<a href="#"
-										onClick="show('{{ $row->barcode }}')"
+									<a href="{{ url('transaksi/' . $row->barcode) }}"
+										target="_blank"
 										class="btn btn-info btn-sm">
 										<i class="fa fa-eye"></i>
 									</a>
@@ -92,41 +92,4 @@
 			</div>
 		</div>
 	</div>
-
-	<!-- Modal -->
-	<div class="modal fade modal-fade-in-scale-up" id="showBarcode" aria-hidden="true"
-	aria-labelledby="exampleModalTitle" role="dialog" tabindex="-1">
-		<div class="modal-dialog modal-simple">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">×</span>
-					</button>
-					<h4 class="modal-title">Show Barcode</h4>
-				</div>
-				<div class="modal-body">
-					<div id="displayBarcode"></div>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					<button type="button" class="btn btn-primary">Save changes</button>
-				</div>
-			</div>
-		</div>
-	</div>
-@endsection
-
-@section('js')
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
-	<script>
-		function show(barcode) {
-			axios.get('/api/transaksi/barcode/' + barcode)
-			.then((response) => {
-				setTimeout(() => {
-					$('#displayBarcode').append('<img src="data:image/png;base64,' + response.data + '" />')
-					$('#showBarcode').modal('show');
-				}, 500)
-			})
-		}
-	</script>
 @endsection

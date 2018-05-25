@@ -34,7 +34,7 @@ class TransaksiController extends Controller
             'code' => $code,
             'transaksi' => $transaksi
         ];
-        return $transaksi;
+        return $data;
     }
 
     public function add()

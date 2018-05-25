@@ -68,7 +68,7 @@
 								<td>{{ $row->created_at }}</td>
 								<td>
 									<a href="#"
-										onClick="show({{ $row->barcode }})"
+										onClick="show('{{ $row->barcode }}')"
 										class="btn btn-info btn-sm">
 										<i class="fa fa-eye"></i>
 									</a>
@@ -118,7 +118,7 @@
 
 @section('js')
 	<script>
-		function show(barcode) {
+		function show() {
 			$('#showBarcode').modal('show');
 		}
 	</script>

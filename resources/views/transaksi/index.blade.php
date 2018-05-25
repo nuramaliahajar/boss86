@@ -73,7 +73,10 @@
                             </tr>
                             @endif
                         </tbody>
-                    </table>
+					</table>
+					<div class="pull-right">
+						{!! $transaksi->links() !!}
+					</div>
 					@slot('footer')
 
 					@endslot

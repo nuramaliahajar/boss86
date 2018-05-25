@@ -13,7 +13,7 @@ class TransaksiController extends Controller
 {
     public function index()
     {
-        $transaksi = Transaksi::orderBy('created_at', 'ASC');
+        $transaksi = Transaksi::orderBy('created_at', 'ASC')->paginate(10);
         return view('transaksi.index', compact('transaksi'));
     }
 

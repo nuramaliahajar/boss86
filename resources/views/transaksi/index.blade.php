@@ -69,7 +69,6 @@
 								<td>
 									<a href="#"
 										onClick="show('{{ $row->barcode }}')"
-										target="_blank"
 										class="btn btn-info btn-sm">
 										<i class="fa fa-eye"></i>
 									</a>
@@ -106,7 +105,18 @@
 					<h4 class="modal-title">Show Barcode</h4>
 				</div>
 				<div class="modal-body">
-					<div id="displayBarcode"></div>
+					<div class="col-md-6">
+						<div id="displayBarcode"></div>
+					</div>
+					<div class="col-md-6">
+						<table class="table table-hover">
+							<tr>
+								<th>Dosen</th>
+								<td></td>
+								<td class="dosen"></td>
+							</tr>
+						</table>
+					</div>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -125,7 +135,8 @@
 			axios.get('/api/transaksi/barcode/' + barcode)
 			.then((response) => {
 				setTimeout(() => {
-					$('#displayBarcode').append('<img src="data:image/png;base64,' + response.data + '" />')
+					$('#displayBarcode').append('<img src="data:image/png;base64,' + response.data.code + '" />')
+					$('.dosen').text(response.data.transaksi.dosen.nama)
 					$('#showBarcode').modal('show');
 				}, 500)
 			})

@@ -28,7 +28,13 @@ class TransaksiController extends Controller
         $barcode->setThickness(25);
         $barcode->setFontSize(10);
         $code = $barcode->generate();
-        return $code;
+
+        $transaksi = Transaksi::with('dosen', 'kelas')->where('barcode', $getCode)->first();
+        $data = [
+            'code' => $code,
+            'transaksi' => $transaksi
+        ];
+        return $transaksi;
     }
 
     public function add()

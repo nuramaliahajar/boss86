@@ -10,4 +10,24 @@ class Transaksi extends Model
     public $incrementing = false;
     protected $primaryKey = 'barcode';
     protected $table = 'transaksi';
+
+    public function jurusan()
+    {
+        return $this->belongsTo(Jurusan::class, 'k_jurusan', 'k_jurusan');
+    }
+
+    public function dosen()
+    {
+        return $this->belongsTo(Dosen::class, 'nidn', 'nidn');
+    }
+
+    public function kelas()
+    {
+        return $this->belongsTo(Kelas::class, 'kode_kls', 'kode_kls');
+    }
+
+    public function semester()
+    {
+        return $this->belongsTo(Semester::class);
+    }
 }

@@ -58,7 +58,14 @@
                         <tbody>
                             @if ($transaksi->count() > 0)
                             @foreach ($transaksi as $row)
-
+							<tr>
+								<td></td>
+								<td>{{ $row->jurusan->jurusan }}</td>
+								<td>{{ $row->dosen->dosen }} <sup>{{ $row->dosen->nidn }}</sup></td>
+								<td>{{ $row->kelas->kelas }}</td>
+								<td>{{ $row->semester->semester }}</td>
+								<td>{{ $row->created_at }}</td>
+							</tr>
                             @endforeach
                             @else
                             <tr>

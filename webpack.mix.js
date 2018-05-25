@@ -19,3 +19,4 @@ mix.js('resources/assets/js/kelas.js', 'public/js');
 mix.js('resources/assets/js/matkul.js', 'public/js');
 mix.js('resources/assets/js/user.js', 'public/js');
 mix.js('resources/assets/js/user_add.js', 'public/js');
+mix.js('resources/assets/js/transaksi_add.js', 'public/js');

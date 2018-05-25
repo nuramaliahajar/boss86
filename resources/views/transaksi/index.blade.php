@@ -50,8 +50,20 @@
                                 <th>Dosen</th>
                                 <th>Kelas</th>
                                 <th>Semester</th>
+                                <th></th>
                             </tr>
                         </thead>
+                        <tbody>
+                            @if ($transaksi->count() > 0)
+                            @foreach ($transaksi as $row)
+
+                            @endforeach
+                            @else
+                            <tr>
+                                <td colspan="6" class="text-center">Tidak ada data</td>
+                            </tr>
+                            @endif
+                        </tbody>
                     </table>
 					@slot('footer')
 

@@ -68,7 +68,7 @@
 								<td>{{ $row->created_at }}</td>
 								<td>
 									<a href="#"
-										oncClick="show({{ $row->barcode }})"
+										onClick="show({{ $row->barcode }})"
 										class="btn btn-info btn-sm">
 										<i class="fa fa-eye"></i>
 									</a>
@@ -93,7 +93,9 @@
 		</div>
 	</div>
 
-	<div class="modal fade modal-fade-in-scale-up" id="showbarcode" aria-labelledby="exampleModalTitle" role="dialog" tabindex="-1">
+	<!-- Modal -->
+	<div class="modal fade modal-fade-in-scale-up" id="showBarcode" aria-hidden="true"
+	aria-labelledby="exampleModalTitle" role="dialog" tabindex="-1">
 		<div class="modal-dialog modal-simple">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -103,7 +105,7 @@
 					<h4 class="modal-title">Show Barcode</h4>
 				</div>
 				<div class="modal-body">
-					<img :src="'data:image/png;base64,' + product.encrypt_barcode" />
+					<img src="" />
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -117,7 +119,7 @@
 @section('js')
 	<script>
 		function show(barcode) {
-			$('#showbarcode').modal('show');
+			$('#showBarcode').modal('show');
 		}
 	</script>
 @endsection

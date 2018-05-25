@@ -50,7 +50,7 @@
                     {!! Form::open(['route' => 'transaksi.store']) !!}
 					<div class="form-group">
                         <label for="">Jurusan</label>
-                        <select name="k_jurusan" id="k_jurusan" class="form-control" required>
+                        <select name="k_jurusan" v-model="k_jurusan" id="k_jurusan" class="form-control" required>
                             <option value="">Pilih</option>
                             @foreach ($jurusan as $row)
                             <option value="{{ $row->k_jurusan }}">{{ $row->jurusan }}</option>
@@ -70,14 +70,14 @@
                     </div>
                     <div class="form-group">
                         <label for="">Mata Kuliah</label>
-                        <select name="kode_mk" id="kode_mk" class="form-control" required>
+                        <select name="kode_mk" v-model="kode_mk" id="kode_mk" class="form-control" required>
                             <option v-for="row in matkul" :value="row.kode_mk">@{{ row.nama }}</option>
                         </select>
                         <p class="text-danger">{{ $errors->first('kode_mk') }}</p>
                     </div>
                     <div class="form-group">
                         <label for="">Kelas</label>
-                        <select name="kode_kls" id="kode_kls" class="form-control" required>
+                        <select name="kode_kls" v-model="kode_kls" id="kode_kls" class="form-control" required>
                             <option value="">Pilih</option>
                             @foreach ($kelas as $row)
                             <option value="{{ $row->kode_kls }}">{{ $row->kelas }}</option>
@@ -87,7 +87,7 @@
                     </div>
                     <div class="form-group">
                         <label for="">Semester</label>
-                        <select name="semester_id" id="semester_id" class="form-control" required>
+                        <select name="semester_id" v-model="semester_id" id="semester_id" class="form-control" required>
                             <option value="">Pilih</option>
                             @foreach ($semester as $row)
                             <option value="{{ $row->id }}">{{ $row->semester }}</option>

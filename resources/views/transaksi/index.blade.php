@@ -93,7 +93,7 @@
 		</div>
 	</div>
 
-	<div class="modal fade modal-fade-in-scale-up show" id="showbarcode" aria-labelledby="exampleModalTitle" role="dialog" tabindex="-1" style="display: block; padding-right: 15px;">
+	<div class="modal fade modal-fade-in-scale-up" id="showbarcode" aria-labelledby="exampleModalTitle" role="dialog" tabindex="-1">
 		<div class="modal-dialog modal-simple">
 			<div class="modal-content">
 				<div class="modal-header">

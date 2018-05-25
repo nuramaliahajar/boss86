@@ -105,17 +105,24 @@
 					<h4 class="modal-title">Show Barcode</h4>
 				</div>
 				<div class="modal-body">
-					<div class="col-md-6">
-						<div id="displayBarcode"></div>
-					</div>
-					<div class="col-md-6">
-						<table class="table table-hover">
-							<tr>
-								<th>Dosen</th>
-								<td></td>
-								<td class="dosen"></td>
-							</tr>
-						</table>
+					<div class="row">
+						<div class="col-md-6">
+							<div id="displayBarcode"></div>
+						</div>
+						<div class="col-md-6">
+							<table class="table table-hover">
+								<tr>
+									<th>Dosen</th>
+									<td></td>
+									<td class="dosen"></td>
+								</tr>
+								<tr>
+									<th>Kelas</th>
+									<td></td>
+									<td class="kelas"></td>
+								</tr>
+							</table>
+						</div>
 					</div>
 				</div>
 				<div class="modal-footer">
@@ -137,6 +144,7 @@
 				setTimeout(() => {
 					$('#displayBarcode').append('<img src="data:image/png;base64,' + response.data.code + '" />')
 					$('.dosen').text(response.data.transaksi.dosen.nama)
+					$('.kelas').text(response.data.transaksi.kelas.kelas)
 					$('#showBarcode').modal('show');
 				}, 500)
 			})

@@ -29,12 +29,22 @@ class TransaksiController extends Controller
         $barcode->setFontSize(10);
         $code = $barcode->generate();
 
-        $transaksi = Transaksi::with('dosen', 'kelas')->where('barcode', $getCode)->first();
+        $transaksi = Transaksi::with('dosen', 'kelas', 'matakuliah')
+            ->whereHas('matakuliah', function($q) {
+                $q->where('kode_mk', 'aa');
+            })
+            ->where('barcode', $getCode)->first();
         $data = [
             'code' => $code,
             'transaksi' => $transaksi
         ];
         return $data;
+    }
+
+    public function getMatkul($nidn)
+    {
+        $matkul = Mata_kuliah::where('nidn', $nidn)->orderBy('nama', 'ASC')->get();
+        return response()->json($matkul);
     }
 
     public function add()
@@ -51,6 +61,7 @@ class TransaksiController extends Controller
         $this->validate($request, [
             'k_jurusan' => 'required|exists:jurusan,k_jurusan',
             'nidn' => 'required|exists:dosen,nidn',
+            'kode_mk' => 'required|exists:mata_kuliah,kode_mk',
             'kode_kls' => 'required|exists:kelas,kode_kls',
             'semester_id' => 'required|exists:semester,id'
         ]);
@@ -60,6 +71,7 @@ class TransaksiController extends Controller
                 'barcode' => $this->generateBarcode(),
                 'k_jurusan' => $request->k_jurusan,
                 'nidn' => $request->nidn,
+                'kode_mk' => $request->kode_mk,
                 'kode_kls' => $request->kode_kls,
                 'semester_id' => $request->semester_id
             ]);

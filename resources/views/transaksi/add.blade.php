@@ -60,13 +60,20 @@
                     </div>
                     <div class="form-group">
                         <label for="">Dosen</label>
-                        <select name="nidn" id="nidn" class="form-control" required>
+                        <select name="nidn" v-model="nidn" id="nidn" class="form-control" required>
                             <option value="">Pilih</option>
                             @foreach ($dosen as $row)
                             <option value="{{ $row->nidn }}">{{ ucfirst($row->nama) }} - {{ $row->nidn }}</option>
                             @endforeach
                         </select>
                         <p class="text-danger">{{ $errors->first('nidn') }}</p>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Mata Kuliah</label>
+                        <select name="kode_mk" id="kode_mk" class="form-control" required>
+                            <option v-for="row in matkul" :value="row.kode_mk">@{{ row.nama }}</option>
+                        </select>
+                        <p class="text-danger">{{ $errors->first('kode_mk') }}</p>
                     </div>
                     <div class="form-group">
                         <label for="">Kelas</label>
@@ -110,4 +117,5 @@
         $('#kode_kls').select2();
         $('#semester_id').select2();
     </script>
+    <script src="{{ asset('js/transaksi_add.js') }}"></script>
 @endsection

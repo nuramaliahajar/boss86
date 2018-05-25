@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Transaksi extends Model
 {
-    protected $fillable = ['barcode', 'k_jurusan', 'nidn', 'kode_kls', 'semester_id'];
+    protected $fillable = ['barcode', 'k_jurusan', 'nidn', 'kode_mk', 'kode_kls', 'semester_id'];
     public $incrementing = false;
     protected $primaryKey = 'barcode';
     protected $table = 'transaksi';
@@ -29,5 +29,10 @@ class Transaksi extends Model
     public function semester()
     {
         return $this->belongsTo(Semester::class);
+    }
+
+    public function matakuliah()
+    {
+        return $this->hasManyThrough(Mata_kuliah::class, Dosen::class, 'nidn', 'nidn', 'nidn', 'nidn');
     }
 }

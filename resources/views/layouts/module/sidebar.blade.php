@@ -54,6 +54,12 @@
                         <span class="site-menu-title">USER</span>
                     </a>
                 </li>
+                <li class="site-menu-item has-sub">
+                    <a href="{{ route('transaksi.index') }}">
+                        <i class="site-menu-icon md-card" aria-hidden="true"></i>
+                        <span class="site-menu-title">TRANSAKSI</span>
+                    </a>
+                </li>
             </ul>
             <div class="site-menubar-section">
                 <h5>

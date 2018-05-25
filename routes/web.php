@@ -45,3 +45,5 @@ Route::get('/user/add', 'UserController@add')->name('user.add');
 Route::get('/user/{id}', 'UserController@edit')->name('user.edit');
 Route::put('/user/{id}', 'UserController@update')->name('user.update');
 Route::post('/user', 'UserController@store')->name('user.store');
+
+Route::get('/transaksi', 'TransaksiController@index')->name('transaksi.index');

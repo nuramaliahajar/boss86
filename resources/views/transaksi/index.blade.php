@@ -18,10 +18,12 @@
 	</div>
 	<div class="page-content" id="dw">
 		<div class="row">
-			<div class="col-md-8">
+			<div class="col-md-12">
 				@component('components.panel')
 					@slot('title')
-						Perkuliahan
+                    <a href="{{ route('transaksi.add') }}" class="btn btn-primary btn-sm">
+                        Tambah Data
+                    </a>
 					@endslot
 					@slot('addon')
 					@endslot

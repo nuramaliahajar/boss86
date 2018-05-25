@@ -117,6 +117,11 @@
 									<td class="dosen"></td>
 								</tr>
 								<tr>
+									<th>Mata Kuliah</th>
+									<td></td>
+									<td class="matkul"></td>
+								</tr>
+								<tr>
 									<th>Kelas</th>
 									<td></td>
 									<td class="kelas"></td>
@@ -144,6 +149,7 @@
 				setTimeout(() => {
 					$('#displayBarcode').append('<img src="data:image/png;base64,' + response.data.code + '" />')
 					$('.dosen').text(response.data.transaksi.dosen.nama)
+					$('.matkul').text(response.data.matkul.nama)
 					$('.kelas').text(response.data.transaksi.kelas.kelas)
 					$('#showBarcode').modal('show');
 				}, 500)

@@ -21,7 +21,7 @@
 			<div class="col-md-4">
 				@component('components.panel')
 					@slot('title')
-						Tambah Data
+						@{{ title }}
 					@endslot
 					@slot('addon')
 					@endslot
@@ -41,7 +41,7 @@
 							<button class="btn btn-primary btn-sm"
 								:disabled="button"
 								>
-								@{{ button ? 'Loading...':'Simpan' }}
+								@{{ button ? 'Loading...':buttonTitle }}
 							</button>
 						</div>
 					</form>

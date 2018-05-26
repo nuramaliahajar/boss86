@@ -31,7 +31,8 @@ var app = new Vue({
 		q: '',
 		sort: 'created_at',
 		orders: 'desc',
-		title: 'Tambah Data'
+		title: 'Tambah Data',
+		buttonTitle: 'Simpan'
 	},
 	watch: {
 		q() {
@@ -80,6 +81,7 @@ var app = new Vue({
 						this.kode_kls = ''
 						this.type = ''
 						this.title = 'Tambah Data'
+						this.buttonTitle = 'Simpan'
 					}, 1000)
 				})
 				.catch ((error) => {
@@ -104,6 +106,7 @@ var app = new Vue({
 				this.type = 'update'
 				this.kode_kls = response.data.kode_kls
 				this.kelas = response.data.kelas
+				this.buttonTitle = 'Edit'
 			})
 			.catch((error) => {
 

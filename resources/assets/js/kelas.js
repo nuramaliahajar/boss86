@@ -53,7 +53,7 @@ var app = new Vue({
 			if (this.type === '') {
 				axios.post('/api/kelas', {
 					kode_kls: this.kode_kls,
-					jurusan: this.kelas
+					kelas: this.kelas
 				})
 				.then((response) => {
 					setTimeout(() => {

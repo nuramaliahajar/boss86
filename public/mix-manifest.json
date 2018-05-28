@@ -6,5 +6,6 @@
     "/js/semester.js": "/js/semester.js",
     "/js/matkul.js": "/js/matkul.js",
     "/js/kelas.js": "/js/kelas.js",
-    "/js/jurusan.js": "/js/jurusan.js"
+    "/js/jurusan.js": "/js/jurusan.js",
+    "/js/transaksi_add.js": "/js/transaksi_add.js"
 }

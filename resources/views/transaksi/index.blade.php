@@ -47,7 +47,7 @@
 					<table class="table table-hover">
                         <thead>
                             <tr>
-                                <th>Barcode</th>
+                                <th>#</th>
                                 <th>Jurusan</th>
                                 <th>Dosen</th>
                                 <th>Kelas</th>
@@ -57,10 +57,11 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @if ($transaksi->count() > 0)
+							@if ($transaksi->count() > 0)
+							@php $no = 1 @endphp
                             @foreach ($transaksi as $row)
 							<tr>
-								<td><strong>#{{ $row->barcode }}</strong></td>
+								<td>{{ $no++ }}</td>
 								<td>{{ $row->jurusan->jurusan }}</td>
 								<td>{{ ucfirst($row->dosen->nama) }} <sup>{{ $row->dosen->nidn }}</sup></td>
 								<td>{{ $row->kelas->kelas }}</td>
@@ -137,7 +138,6 @@
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					<button type="button" class="btn btn-primary">Save changes</button>
 				</div>
 			</div>
 		</div>

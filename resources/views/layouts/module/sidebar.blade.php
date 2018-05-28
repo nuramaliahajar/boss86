@@ -9,6 +9,7 @@
                         <span class="site-menu-title">DASHBOARD</span>
                     </a>
                 </li> 
+                @can('akademik')
                 <li class="site-menu-item has-sub">
                     <a href="javascript:void(0)">
                         <i class="site-menu-icon md-card" aria-hidden="true"></i>
@@ -60,6 +61,15 @@
                         <span class="site-menu-title">TRANSAKSI</span>
                     </a>
                 </li>
+                @endcan
+                @can('mahasiswa')
+                <li class="site-menu-item has-sub">
+                    <a href="{{ route('absensi.index') }}">
+                        <i class="site-menu-icon md-card" aria-hidden="true"></i>
+                        <span class="site-menu-title">ABSENSI</span>
+                    </a>
+                </li>
+                @endcan
             </ul>
             <div class="site-menubar-section">
                 <h5>

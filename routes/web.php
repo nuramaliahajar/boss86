@@ -50,6 +50,7 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('/transaksi', 'TransaksiController@index')->name('transaksi.index');
     Route::get('/transaksi/add', 'TransaksiController@add')->name('transaksi.add');
     Route::post('/transaksi', 'TransaksiController@store')->name('transaksi.store');
+    Route::get('/transaksi/{barcode}', 'TransaksiController@showBarcode')->name('transaksi.show');
 
     Route::get('/absensi', 'AbsensiController@index')->name('absensi.index');
     Route::get('/absensi/add', 'AbsensiController@tambah')->name('absensi.add');

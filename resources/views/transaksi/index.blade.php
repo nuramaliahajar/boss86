@@ -68,8 +68,8 @@
 								<td>{{ $row->semester->semester }}</td>
 								<td>{{ $row->created_at }}</td>
 								<td>
-									<a href="#"
-										onClick="show('{{ $row->barcode }}')"
+									<a href="{{ url('transaksi/' . $row->barcode) }}"
+										target="_blank"
 										class="btn btn-info btn-sm">
 										<i class="fa fa-eye"></i>
 									</a>
@@ -143,28 +143,3 @@
 		</div>
 	</div>
 @endsection
-
-
-@section('js')
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
-	<script>
-		function show(barcode) {
-			$('#displayBarcode').empty()
-			$('.dosen').empty()
-			$('.matkul').empty()
-			$('.kelas').empty()
-			$('.semester').empty()
-			axios.get('/api/transaksi/barcode/' + barcode)
-			.then((response) => {
-				setTimeout(() => {
-					$('#displayBarcode').append('<img src="data:image/png;base64,' + response.data.code + '" />')
-					$('.dosen').text(response.data.transaksi.dosen.nama)
-					$('.matkul').text(response.data.matkul.nama)
-					$('.kelas').text(response.data.transaksi.kelas.kelas)
-					$('.semester').text(response.data.transaksi.semester.semester)
-					$('#showBarcode').modal('show');
-				}, 500)
-			})
-		}
-	</script>
-@endsection 

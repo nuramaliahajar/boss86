@@ -94,4 +94,12 @@ class TransaksiController extends Controller
         } 
         return 'boss-1';
     }
+
+    public function showBarcode($barcode)
+    {
+        $transaksi = Transaksi::with('dosen', 'kelas', 'semester')
+            ->where('barcode', $barcode)->first();
+        $matkul = Mata_kuliah::where('nidn', $transaksi->nidn)->where('kode_mk', $transaksi->kode_mk)->first();
+        return view('transaksi.view', compact('transaksi', 'matkul'));
+    }
 }

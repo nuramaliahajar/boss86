@@ -14,4 +14,9 @@ class Absensi extends Model
     {
         return $this->belongsTo(Mahasiswa::class, 'nim', 'nim');
     }
+
+    public function transaksi()
+    {
+        return $this->belongsTo(Transaksi::class, 'barcode', 'barcode');
+    }
 }

@@ -55,7 +55,7 @@
 					</div>
 					<div class="form-group {{ $errors->has('no_tlpn') ? 'has-error':'' }}">
 						<label for="">No Telpon</label>
-						<input type="text" name="no_tlpn" value="{{ $dosen->tgl_lahir->format('m-d-Y') }}" maxlength="12" class="form-control" required="">
+						<input type="text" name="no_tlpn" value="{{ $dosen->no_tlpn }}" maxlength="12" class="form-control" required="">
 						<p class="text-danger">{{ $errors->first('no_tlpn') }}</p>
 					</div>
 					<div class="form-group {{ $errors->has('email') ? 'has-error':'' }}">

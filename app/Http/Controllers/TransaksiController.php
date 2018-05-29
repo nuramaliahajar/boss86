@@ -66,7 +66,6 @@ class TransaksiController extends Controller
             'semester_id' => 'required|exists:semester,id'
         ]);
 
-        return $this->generateBarcode();
 
         try {
             $transaksi = Transaksi::create([

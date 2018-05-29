@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Absensi;
+use App\Transaksi;
 use Auth;
 use Carbon\Carbon;
 

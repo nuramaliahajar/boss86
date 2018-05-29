@@ -34,19 +34,19 @@
                     <table class="table table-hover">
                         <tr>
                             <td>#</td>
+                            <td>NIM</td>
                             <td>Nama Lengkap</td>
-                            <td>Mata Kuliah</td>
                             <th>Kehadiran</th>
                             <td>Tanggal</td>
-                            <td></td>
+                            <td>Actions</td>
                         </tr>
                         @if ($absensi->count() > 0)
                             @php $no = 1; @endphp
                             @foreach ($absensi as $row)
                             <tr>
                                 <td>{{ $no++ }}</td>
+                                <td>{{ $row->nim }}</td>
                                 <td>{{ $row->mahasiswa->nama }}</td>
-                                <td></td>
                                 <td>
                                     @if ($row->kehadiran == 1)
                                     Hadir
@@ -57,7 +57,12 @@
                                     @endif
                                 </td>
                                 <td>{{ $row->created_at->format('d-m-Y H:i:s') }}</td>
-                                <td></td>
+                                <td>
+                                    <a href="{{ url('absen/detail/' . $row->barcode) }}" 
+                                        class="btn btn-primary btn-sm">
+                                        <i class="fa fa-eye"></i>
+                                    </a>
+                                </td>
                             </tr>
                             @endforeach
                         @else

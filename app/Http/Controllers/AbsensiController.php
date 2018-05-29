@@ -37,4 +37,10 @@ class AbsensiController extends Controller
 
         return redirect(route('absensi.index'));
     }
+
+    public function show($barcode)
+    {
+        $transaksi = Transaksi::where('barcode', $barcode)->first();
+        return view('absen.view', compact('transaksi'));
+    }
 }

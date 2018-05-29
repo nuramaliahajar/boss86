@@ -36,24 +36,28 @@
 					<div class="form-group">
                         <label for="">Kode Mata Kuliah</label>
                         <input type="text" name="kode_mk" readonly="" value="{{ $mata_kuliah->kode_mk }}" class="form-control" required="">
-                    </div>
+						<p class="text-danger">{{ $errors->first('kode_mk') }}</p>
+					</div>
                     <div class="form-group">
                         <label for="">Mata Kuliah</label>
                         <input type="text" name="nama" value="{{ $mata_kuliah->nama }}" class="form-control" required="">
-                    </div>
+						<p class="text-danger">{{ $errors->first('nama') }}</p>
+					</div>
                     <div class="form-group">
                         <label for="">Dosen</label>
-                        <select id="nidn" nama="nidn" required class="form-control">
+                        <select id="nidn" name="nidn" required class="form-control">
                             <option value="">Pilih</option>
                             @foreach ($dosen as $row)
                             <option value="{{ $row->nidn }}" {{ $mata_kuliah->nidn == $row->nidn ? 'selected':'' }}>{{ $row->nama }}</option>
                             @endforeach
-                        </select>
+						</select>
+						<p class="text-danger">{{ $errors->first('nidn') }}</p>
                     </div>
                     <div class="form-group">
                         <label for="">SKS</label>
-                        <input type="text" nama="sks" value="{{ $mata_kuliah->sks }}" class="form-control" required="">
-                    </div>
+                        <input type="text" name="sks" value="{{ $mata_kuliah->sks }}" class="form-control" required="">
+						<p class="text-danger">{{ $errors->first('sks') }}</p>
+					</div>
 					<div class="form-group">
 						<button class="btn btn-primary btn-sm">
 							<i class="fa fa-edit"></i>

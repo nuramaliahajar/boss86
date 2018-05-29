@@ -78,7 +78,7 @@ class MataKuliahController extends Controller
             'nidn' => $request->nidn,
             'sks' => $request->sks
     	]);
-    	return response()->json($mata_kuliah);
+    	return redirect(route('matkul.index'));
     }
 
     public function delete($kode_mk)

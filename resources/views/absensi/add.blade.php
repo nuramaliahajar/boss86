@@ -32,7 +32,10 @@
 					@endif
 					
 					<div class="form-group">
-						<qrcode-reader @decode="onDecode" @locate="onLocate"></qrcode-reader>
+						<qrcode-reader 
+							:paused="paused"
+							@decode="onDecode" 
+							@locate="onLocate"></qrcode-reader>
 					</div>
 					<div class="form-group">
 						<label for="">Barcode</label>

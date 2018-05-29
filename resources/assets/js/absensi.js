@@ -6,16 +6,18 @@ Vue.use(VueQrcodeReader)
 var app = new Vue({
 	el: '#dw',
 	data: {
-		barcode: ''
+		barcode: '',
+		paused: false
 	},
 	methods: {
 		onDecode (content) {
 			console.log(content)
 			this.barcode = content
+			this.paused = true
 		},
 	
 		onLocate (points) {
-			console.log(content)
+			console.log(points)
 		}
 	}
 })

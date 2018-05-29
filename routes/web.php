@@ -56,4 +56,7 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('/absensi/add', 'AbsensiController@tambah')->name('absensi.add');
     Route::post('/absensi', 'AbsensiController@store')->name('absensi.store');
     Route::get('/absensi/detail/{barcode}', 'AbsensiController@show')->name('absensi.show');
+
+    Route::get('/absensi/request', 'AbsensiController@absenRequest')->name('absensi.request');
+    Route::post('/absensi/request', 'AbsensiController@storeRequest')->name('absensi.store_request');
 });

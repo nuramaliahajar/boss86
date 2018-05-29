@@ -69,6 +69,12 @@
                         <span class="site-menu-title">ABSENSI</span>
                     </a>
                 </li>
+                <li class="site-menu-item has-sub">
+                    <a href="{{ route('absensi.request') }}">
+                        <i class="site-menu-icon md-card" aria-hidden="true"></i>
+                        <span class="site-menu-title">REQUEST ABSEN</span>
+                    </a>
+                </li>
                 @endcan
             </ul>
             <div class="site-menubar-section">

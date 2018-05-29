@@ -48,4 +48,28 @@ class AbsensiController extends Controller
         $absensi = Absensi::with('mahasiswa')->where('nim', Auth::user()->mahasiswa->nim)->get();
         return view('absensi.view', compact('transaksi', 'matkul', 'absensi'));
     }
+
+    //request absen
+    public function absenRequest()
+    {
+        $transaksi = Transaksi::with('jurusan', 'matakuliah', 'dosen')->where('k_jurusan', Auth::user()->mahasiswa->k_jurusan)->get();
+        return view('absensi.request_absen', compact('transaksi'));
+    }
+
+    public function storeRequest(Request $request)
+    {
+        $this->validate($request, [
+            'barcode' => 'required|exists:transaksi,barcode',
+            'alasan' => 'required'
+        ]);
+
+        $absen = Absensi::create([
+            'barcode' => $request->barcode,
+            'nim' => Auth::user()->mahasiswa->nim,
+            'kehadiran' => $request->alasan,
+            'status' => 0,
+            'tanggal' => Carbon::now()
+        ]);
+        return redirect(route('absensi.index'));
+    }
 }

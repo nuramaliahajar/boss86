@@ -36,7 +36,9 @@
 						<qrcode-reader 
 							:paused="paused"
 							@decode="onDecode" 
-							></qrcode-reader>
+							>
+							<LoadingIndicator v-show="loading" />
+						</qrcode-reader>
 					</div>
 					<div class="form-group">
 						<label for="">Barcode</label>

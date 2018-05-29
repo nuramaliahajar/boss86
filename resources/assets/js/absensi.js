@@ -1,10 +1,12 @@
 import Vue from 'vue'
-import VueQrcodeReader from 'vue-qrcode-reader'
+import { QrcodeReader } from 'vue-qrcode-reader'
+import InitHandler from './mixins/InitHandler'
 
-Vue.use(VueQrcodeReader)
 
 var app = new Vue({
 	el: '#dw',
+	components: { QrcodeReader },
+	mixins: [ InitHandler ],
 	data: {
 		barcode: '',
 		paused: false
@@ -14,10 +16,6 @@ var app = new Vue({
 			console.log(content)
 			this.barcode = content
 			this.paused = true
-		},
-	
-		onLocate (points) {
-			console.log(points)
 		}
 	}
 })

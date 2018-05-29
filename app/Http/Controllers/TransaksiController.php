@@ -66,6 +66,8 @@ class TransaksiController extends Controller
             'semester_id' => 'required|exists:semester,id'
         ]);
 
+        return $this->generateBarcode();
+
         try {
             $transaksi = Transaksi::create([
                 'barcode' => $this->generateBarcode(),
@@ -87,7 +89,8 @@ class TransaksiController extends Controller
         if ($transaksi->get()->count() > 0) {
             $getBarcode = $transaksi->first()->barcode;
             $exBarcode = explode('-', $getBarcode);
-            $barcode = 'boss-' . $exBarcode[1] + 1;
+            $count = $exBarcode[1] + 1;
+            $barcode = 'boss-' . $count;
             return $barcode;
         } 
         return 'boss-1';

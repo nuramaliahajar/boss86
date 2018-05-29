@@ -47,8 +47,16 @@
                                 <td>{{ $no++ }}</td>
                                 <td>{{ $row->mahasiswa->nama }}</td>
                                 <td></td>
-                                <td></td>
-                                <td>{{ $row->created_at }}</td>
+                                <td>
+                                    @if ($row->kehadiran == 1)
+                                    Hadir
+                                    @elseif ($row->kehadiran == 0)
+                                    Absen
+                                    @else
+                                    Izin / Sakit
+                                    @endif
+                                </td>
+                                <td>{{ $row->created_at->format('d-m-Y H:i:s') }}</td>
                                 <td></td>
                             </tr>
                             @endforeach

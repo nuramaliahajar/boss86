@@ -11,7 +11,9 @@ class AbsensiController extends Controller
 {
     public function index()
     {
-        $absensi = Absensi::with('mahasiswa')->orderBy('created_at', 'DESC')->paginate(10);
+        $absensi = Absensi::with('mahasiswa')
+            ->where('nim', Auth::user()->mahasiswa->nim)
+            ->orderBy('created_at', 'DESC')->paginate(10);
         return view('absensi.index', compact('absensi'));
     }
 

@@ -55,7 +55,11 @@
                     </div>
                     <div class="form-group">
                         <label for="">SKS</label>
-                        <input type="text" name="sks" value="{{ $mata_kuliah->sks }}" class="form-control" required="">
+                        <select name="sks" id="" class="form-control" required>
+							<option value="">Pilih</option>
+							<option value="2" {{ $mata_kuliah->sks == 2 ? 'selected':'' }}>2</option>
+							<option value="4" {{ $mata_kuliah->sks == 4 ? 'selected':'' }}>4</option>
+						</select>
 						<p class="text-danger">{{ $errors->first('sks') }}</p>
 					</div>
 					<div class="form-group">

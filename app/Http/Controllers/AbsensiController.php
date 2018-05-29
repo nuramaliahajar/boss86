@@ -23,9 +23,9 @@ class AbsensiController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'barcode' => 'required'
+            'barcode' => 'required|exists:transaksi,barcode'
         ]);
-
+        
         $absen = Absensi::create([
             'barcode' => $request->barcode,
             'nim' => Auth::user()->mahasiswa->nim,

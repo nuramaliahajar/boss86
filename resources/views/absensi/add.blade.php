@@ -42,6 +42,7 @@
 					<div class="form-group">
 						<label for="">Barcode</label>
 						<input type="text" v-model="barcode" name="barcode" class="form-control">
+						<p class="text-danger">{{ $errors->first('barcode') }}</p>
 					</div>
 					<div class="form-group">
 						<button class="btn btn-primary btn-sm">Absen!</button>

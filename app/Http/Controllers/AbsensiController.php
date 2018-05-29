@@ -45,7 +45,10 @@ class AbsensiController extends Controller
     {
         $transaksi = Transaksi::where('barcode', $barcode)->first();
         $matkul = Mata_kuliah::where('nidn', $transaksi->nidn)->where('kode_mk', $transaksi->kode_mk)->first();
-        $absensi = Absensi::with('mahasiswa')->where('nim', Auth::user()->mahasiswa->nim)->get();
+        $absensi = Absensi::with('mahasiswa')
+            ->where('nim', Auth::user()->mahasiswa->nim)
+            ->where('barcode', $barcode)
+            ->get();
         return view('absensi.view', compact('transaksi', 'matkul', 'absensi'));
     }
 
@@ -67,9 +70,27 @@ class AbsensiController extends Controller
             'barcode' => $request->barcode,
             'nim' => Auth::user()->mahasiswa->nim,
             'kehadiran' => $request->alasan,
-            'status' => 0,
+            'status' => false,
             'tanggal' => Carbon::now()
         ]);
         return redirect(route('absensi.index'));
+    }
+
+    public function verifikasiRequest()
+    {
+        $absen = Absensi::where('status', 0)
+            ->with('transaksi')
+            ->whereHas('transaksi', function ($q) {
+                $q->where('nidn', Auth::user()->dosen->nidn);
+            })
+            ->orderBy('created_at', 'DESC')->paginate(10);
+        return view('absensi.verifikasi', compact('absen'));
+    }
+
+    public function storeVerifikasi($id)
+    {
+        $absen = Absensi::find($id);
+        $absen->update(['status' => 1]);
+        return redirect()->back();
     }
 }

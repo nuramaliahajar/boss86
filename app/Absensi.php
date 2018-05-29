@@ -6,9 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Absensi extends Model
 {
-    protected $fillable = ['barcode', 'nim', 'kehadiran', 'tanggal'];
+    protected $fillable = ['barcode', 'nim', 'kehadiran', 'status', 'tanggal'];
     public $incrementing = false;
     protected $table = 'absensi';
+    protected $dates = ['tanggal'];
 
     public function mahasiswa()
     {

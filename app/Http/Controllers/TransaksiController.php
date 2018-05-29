@@ -10,12 +10,19 @@ use App\Kelas;
 use App\Semester;
 use App\Mata_kuliah;
 use CodeItNow\BarcodeBundle\Utils\BarcodeGenerator;
+use Auth;
 
 class TransaksiController extends Controller
 {
     public function index()
     {
-        $transaksi = Transaksi::orderBy('created_at', 'ASC')->paginate(10);
+        $transaksi = Transaksi::orderBy('created_at', 'ASC');
+        if (Auth::user()->role == 0) {
+            $transaksi = $transaksi->paginate(10);
+        } else {
+            $transaksi = $transaksi->where('nidn', Auth::user()->dosen->nidn)->paginate(10);
+        }
+        
         return view('transaksi.index', compact('transaksi'));
     }
 

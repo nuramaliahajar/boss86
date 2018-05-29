@@ -21,9 +21,11 @@
 			<div class="col-md-12">
 				@component('components.panel')
 					@slot('title')
+					@can('akademik')
                     <a href="{{ route('transaksi.add') }}" class="btn btn-primary btn-sm">
                         Tambah Data
-                    </a>
+					</a>
+					@endcan
 					@endslot
 					@slot('addon')
 					@endslot

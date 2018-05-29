@@ -59,4 +59,6 @@ Route::group(['middleware' => 'auth'], function() {
 
     Route::get('/absensi/request', 'AbsensiController@absenRequest')->name('absensi.request');
     Route::post('/absensi/request', 'AbsensiController@storeRequest')->name('absensi.store_request');
+    Route::get('/absensi/verifikasi', 'AbsensiController@verifikasiRequest')->name('absensi.verifikasi');
+    Route::delete('/absensi/verifikasi/{id}', 'AbsensiController@storeVerifikasi')->name('absensi.verifikasi_store');
 });

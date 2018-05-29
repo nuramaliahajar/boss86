@@ -52,23 +52,6 @@
 					@endslot
 				@endcomponent
             </div>
-            <div class="col-md-6">
-                @component('components.panel')
-                    @slot('title')
-                    @endslot
-                    @slot('addon')
-                    @endslot
-                    
-                    <qr-code 
-                        text="{{ $transaksi->barcode }}"
-                        bg-color="#3498db" 
-                        error-level="M">
-                    </qr-code>
-                    @slot('footer')
-
-                    @endslot
-                @endcomponent
-            </div>
         </div>
         <div class="row">
             <div class="col-md-12">
@@ -87,6 +70,7 @@
                                 <td>Nama Lengkap</td>
                                 <td>Kehadiran</td>
                                 <td>Tanggal</td>
+                                <td>Status</td>
                             </tr>
                         </thead>
                         <tbody>
@@ -98,15 +82,28 @@
                                 <td>{{ $row->nim }}</td>
                                 <td>{{ $row->mahasiswa->nama }}</td>
                                 <td>
-                                    @if ($row->kehadiran == 1)
-                                    Hadir
-                                    @elseif ($row->kehadiran == 0)
-                                    Absen
+                                    @if ($row->status == 1)
+                                        @if ($row->kehadiran == 1)
+                                        Hadir
+                                        @elseif ($row->kehadiran == 0)
+                                        Absen
+                                        @elseif ($row->kehadiran == 2)
+                                        Izin
+                                        @else
+                                        Sakit
+                                        @endif
                                     @else
-                                    Izin
+                                    -
                                     @endif
                                 </td>
                                 <td>{{ $row->created_at->format('d-m-Y H:i:s') }}</td>
+                                <td>
+                                    @if ($row->status == 1)
+                                    Disetujui
+                                    @else
+                                    Direview
+                                    @endif
+                                </td>
                             </tr>
                             @endforeach
                             @else

@@ -76,6 +76,20 @@
                     </a>
                 </li>
                 @endcan
+                @can('dosen')
+                <li class="site-menu-item has-sub">
+                    <a href="{{ route('transaksi.index') }}">
+                        <i class="site-menu-icon md-card" aria-hidden="true"></i>
+                        <span class="site-menu-title">TRANSAKSI</span>
+                    </a>
+                </li>
+                <li class="site-menu-item has-sub">
+                    <a href="{{ route('absensi.verifikasi') }}">
+                        <i class="site-menu-icon md-card" aria-hidden="true"></i>
+                        <span class="site-menu-title">VERIFIKASI</span>
+                    </a>
+                </li>
+                @endcan
             </ul>
             <div class="site-menubar-section">
                 <h5>

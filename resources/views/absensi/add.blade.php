@@ -30,7 +30,14 @@
 							{!! session('success') !!}
 						@endcomponent
 					@endif
-                    <qrcode-reader @decode="onDecode" @locate="onLocate"></qrcode-reader>
+					
+					<div class="form-group">
+						<qrcode-reader @decode="onDecode" @locate="onLocate"></qrcode-reader>
+					</div>
+					<div class="form-group">
+						<label for="">Barcode</label>
+						<input type="text" v-model="barcode" class="form-control">
+					</div>
 					@slot('footer')
 
 					@endslot

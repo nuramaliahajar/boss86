@@ -19,28 +19,6 @@ class TransaksiController extends Controller
         return view('transaksi.index', compact('transaksi'));
     }
 
-    public function selectBarcode($barcode)
-    {
-        $getCode = $barcode;
-        $barcode = new BarcodeGenerator();
-        $barcode->setText($getCode);
-        $barcode->setType(BarcodeGenerator::Code128);
-        $barcode->setScale(2);
-        $barcode->setThickness(25);
-        $barcode->setFontSize(10);
-        $code = $barcode->generate();
-
-        $transaksi = Transaksi::with('dosen', 'kelas', 'semester')
-            ->where('barcode', $getCode)->first();
-        $matkul = Mata_kuliah::where('nidn', $transaksi->nidn)->where('kode_mk', $transaksi->kode_mk)->first();
-        $data = [
-            'code' => $code,
-            'transaksi' => $transaksi,
-            'matkul' => $matkul
-        ];
-        return $data;
-    }
-
     public function getMatkul($nidn)
     {
         $matkul = Mata_kuliah::where('nidn', $nidn)->orderBy('nama', 'ASC')->get();

@@ -31,6 +31,7 @@
 						@endcomponent
 					@endif
 					
+					{!! Form::open(['route' => 'absensi.store']) !!}
 					<div class="form-group">
 						<qrcode-reader 
 							:paused="paused"
@@ -39,8 +40,12 @@
 					</div>
 					<div class="form-group">
 						<label for="">Barcode</label>
-						<input type="text" v-model="barcode" class="form-control">
+						<input type="text" v-model="barcode" name="barcode" class="form-control">
 					</div>
+					<div class="form-group">
+						<button class="btn btn-primary btn-sm">Absen!</button>
+					</div>
+					{!! Form::close() !!}
 					@slot('footer')
 
 					@endslot

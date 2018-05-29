@@ -54,4 +54,5 @@ Route::group(['middleware' => 'auth'], function() {
 
     Route::get('/absensi', 'AbsensiController@index')->name('absensi.index');
     Route::get('/absensi/add', 'AbsensiController@tambah')->name('absensi.add');
+    Route::get('/absensi', 'AbsensiController@store')->name('absensi.store');
 });

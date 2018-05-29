@@ -58,7 +58,7 @@
                                 </td>
                                 <td>{{ $row->created_at->format('d-m-Y H:i:s') }}</td>
                                 <td>
-                                    <a href="{{ url('absen/detail/' . $row->barcode) }}" 
+                                    <a href="{{ url('absensi/detail/' . $row->barcode) }}" 
                                         class="btn btn-primary btn-sm">
                                         <i class="fa fa-eye"></i>
                                     </a>

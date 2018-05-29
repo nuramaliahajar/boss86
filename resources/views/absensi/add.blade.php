@@ -37,7 +37,6 @@
 							:paused="paused"
 							@decode="onDecode" 
 							>
-							<LoadingIndicator v-show="loading" />
 						</qrcode-reader>
 					</div>
 					<div class="form-group">

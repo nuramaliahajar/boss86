@@ -149,6 +149,11 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
 	<script>
 		function show(barcode) {
+			$('#displayBarcode').empty()
+			$('.dosen').empty()
+			$('.matkul').empty()
+			$('.kelas').empty()
+			$('.semester').empty()
 			axios.get('/api/transaksi/barcode/' + barcode)
 			.then((response) => {
 				setTimeout(() => {

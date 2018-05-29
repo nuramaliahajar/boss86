@@ -15,6 +15,6 @@ class AbsensiController extends Controller
 
     public function tambah(Request $request)
     {
-        
+        return view('absensi.add');
     }
 }

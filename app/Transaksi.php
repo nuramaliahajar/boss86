@@ -35,4 +35,9 @@ class Transaksi extends Model
     {
         return $this->hasManyThrough(Mata_kuliah::class, Dosen::class, 'nidn', 'nidn', 'nidn', 'nidn');
     }
+
+    public function absensi()
+    {
+        return $this->hasMany(Absensi::class, 'barcode', 'barcode');
+    }
 }

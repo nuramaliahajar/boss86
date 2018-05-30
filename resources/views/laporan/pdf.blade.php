@@ -75,7 +75,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @if ($transaksi->absensi->count() > 0)
+                            @if ($transaksi->count() > 0)
                             @foreach ($transaksi->absensi as $row)
                             <tr>
                                 <td>{{ $row->nim }}</td>

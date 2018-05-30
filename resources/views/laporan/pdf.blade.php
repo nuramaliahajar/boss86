@@ -75,6 +75,7 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @if ($transaksi->absensi->count() > 0)
                             @foreach ($transaksi->absensi as $row)
                             <tr>
                                 <td>{{ $row->nim }}</td>
@@ -99,6 +100,11 @@
                                 </td>
                             </tr>
                             @endforeach
+                            @else
+                            <tr>
+                                <td colspan="4" class="text-center">Tidak ada data</td>
+                            </tr>
+                            @endif
                         </tbody>
                     </table>
                 </div>

@@ -31,6 +31,7 @@
                                 text="{{ $transaksi->barcode }}"
                                 error-level="M">
                             </qr-code>
+                            <p><strong>{{ $transaksi->barcode }}</strong></p>
                         </div>
                         <div class="col-md-6">
                             <table class="table table-hover">

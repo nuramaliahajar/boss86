@@ -10,6 +10,7 @@ class Transaksi extends Model
     public $incrementing = false;
     protected $primaryKey = 'barcode';
     protected $table = 'transaksi';
+    protected $dates = ['created_at'];
 
     public function jurusan()
     {

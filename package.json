@@ -19,6 +19,7 @@
         "vue": "^2.5.7"
     },
     "dependencies": {
+        "moment": "^2.22.1",
         "vue-qrcode-component": "^2.1.1",
         "vue-qrcode-reader": "^0.7.3",
         "vue-sweetalert2": "^1.2.4"

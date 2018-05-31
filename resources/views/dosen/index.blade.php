@@ -47,7 +47,7 @@
 								<td>@{{ row.nidn }}</td>
 								<td>@{{ row.nama }}</td>
 								<td>@{{ row.alamat }}</td>
-								<td>@{{ row.tgl_lahir }}</td>
+								<td>@{{ row.tgl_lahir | date }}</td>
 								<th>@{{ row.no_tlpn }}</th>
 								<td>@{{ row.email }}</td>
 								<td>
@@ -110,7 +110,7 @@
 							<tr>
 								<th>Tgl Lahir</th>
 								<td>:</td>
-								<td>@{{ person.tgl_lahir }}</td>
+								<td>@{{ person.tgl_lahir | date }}</td>
 							</tr>
 						</table>
 					</div>

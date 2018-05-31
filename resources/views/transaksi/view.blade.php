@@ -29,7 +29,6 @@
                         <div class="col-md-6">
                             <qr-code 
                                 text="{{ $transaksi->barcode }}"
-                                bg-color="#3498db" 
                                 error-level="M">
                             </qr-code>
                         </div>

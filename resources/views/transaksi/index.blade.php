@@ -51,7 +51,8 @@
                             <tr>
                                 <th>#</th>
                                 <th>Jurusan</th>
-                                <th>Dosen</th>
+								<th>Dosen</th>
+								<th>Mata Kuliah</th>
                                 <th>Kelas</th>
                                 <th>Semester</th>
 								<th></th>
@@ -66,9 +67,10 @@
 								<td>{{ $no++ }}</td>
 								<td>{{ $row->jurusan->jurusan }}</td>
 								<td>{{ ucfirst($row->dosen->nama) }} <sup>{{ $row->dosen->nidn }}</sup></td>
+								<td>{{ $row->nama }}</td>
 								<td>{{ $row->kelas->kelas }}</td>
 								<td>{{ $row->semester->semester }}</td>
-								<td>{{ $row->created_at }}</td>
+								<td>{{ $row->created_at->format('d-m-Y') }}</td>
 								<td>
 									<a href="{{ url('transaksi/' . $row->barcode) }}"
 										target="_blank"

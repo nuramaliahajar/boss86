@@ -4,11 +4,16 @@ import VueSweetalert2 from 'vue-sweetalert2'
 import DataTable from './components/DataTable.vue'
 import Pagination from './components/Pagination.vue'
 import ModalTab from './components/ModalTab.vue'
+import moment from 'moment'
 
 Vue.component('data-table', DataTable)
 Vue.component('pagination', Pagination)
 Vue.use(VueSweetalert2)
 Vue.component('modal-tab', ModalTab)
+
+Vue.filter('date', function (date) {
+    return moment(date).format('D MMM Y');
+})
 
 var app = new Vue({
 	el: '#dw',

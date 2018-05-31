@@ -16,11 +16,16 @@ class TransaksiController extends Controller
 {
     public function index()
     {
-        $transaksi = Transaksi::orderBy('created_at', 'ASC');
+        $transaksi = Transaksi::select('transaksi.k_jurusan', 'transaksi.nidn', 'transaksi.kode_mk', 'mata_kuliah.nama', 'transaksi.kode_kls', 'transaksi.semester_id', 'transaksi.created_at')
+            ->orderBy('transaksi.created_at', 'ASC')->join('mata_kuliah', function($join){
+                $join->on('transaksi.nidn', '=', 'mata_kuliah.nidn');
+                $join->on('transaksi.kode_mk', '=', 'mata_kuliah.kode_mk');
+            })
+            ->with('jurusan', 'dosen', 'kelas', 'semester');
         if (Auth::user()->role == 0) {
             $transaksi = $transaksi->paginate(10);
         } else {
-            $transaksi = $transaksi->where('nidn', Auth::user()->dosen->nidn)->paginate(10);
+            $transaksi = $transaksi->where('transaksi.nidn', Auth::user()->dosen->nidn)->paginate(10);
         }
         
         return view('transaksi.index', compact('transaksi'));

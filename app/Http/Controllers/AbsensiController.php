@@ -55,7 +55,13 @@ class AbsensiController extends Controller
     //request absen
     public function absenRequest()
     {
-        $transaksi = Transaksi::with('jurusan', 'matakuliah', 'dosen')->where('k_jurusan', Auth::user()->mahasiswa->k_jurusan)->get();
+        $transaksi = Transaksi::select('transaksi.nidn', 'transaksi.kode_mk', 'mata_kuliah.nama', 'transaksi.k_jurusan')
+            ->join('mata_kuliah', function($join) {
+                $join->on('transaksi.nidn', '=', 'mata_kuliah.nidn');
+                $join->on('transaksi.kode_mk', '=', 'mata_kuliah.kode_mk');
+            })
+            ->with('jurusan', 'dosen')
+            ->where('transaksi.k_jurusan', Auth::user()->mahasiswa->k_jurusan)->get();
         return view('absensi.request_absen', compact('transaksi'));
     }
 

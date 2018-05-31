@@ -31,7 +31,9 @@
                         <select name="barcode" id="" required class="form-control">
                             <option value="">Pilih</option>
                             @foreach ($transaksi as $row)
-                            <option value="{{ $row->barcode }}">{{ $row->kode_mk }} - {{ $row->dosen->nama }}</option>
+                            <option value="{{ $row->barcode }}">
+                                {{ $row->nama }} (<sup>{{ $row->jurusan->jurusan }}</sup>) - {{ $row->dosen->nama }}
+                            </option>
                             @endforeach
                         </select>
                     </div>

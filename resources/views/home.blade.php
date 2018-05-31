@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-    <title>Dashboard | SIMPOS PBB</title>
+    <title>Dashboard | Absensi</title>
 @endsection
 
 @section('content')

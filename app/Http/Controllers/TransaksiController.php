@@ -16,7 +16,7 @@ class TransaksiController extends Controller
 {
     public function index()
     {
-        $transaksi = Transaksi::select('transaksi.k_jurusan', 'transaksi.nidn', 'transaksi.kode_mk', 'mata_kuliah.nama', 'transaksi.kode_kls', 'transaksi.semester_id', 'transaksi.created_at')
+        $transaksi = Transaksi::select('transaksi.barcode', 'transaksi.k_jurusan', 'transaksi.nidn', 'transaksi.kode_mk', 'mata_kuliah.nama', 'transaksi.kode_kls', 'transaksi.semester_id', 'transaksi.created_at')
             ->orderBy('transaksi.created_at', 'ASC')->join('mata_kuliah', function($join){
                 $join->on('transaksi.nidn', '=', 'mata_kuliah.nidn');
                 $join->on('transaksi.kode_mk', '=', 'mata_kuliah.kode_mk');

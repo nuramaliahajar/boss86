@@ -18,7 +18,7 @@
 	</div>
 	<div class="page-content" id="dw">
 		<div class="row">
-			<div class="col-md-8">
+			<div class="col-md-12">
 				@component('components.panel')
 					@slot('title')
                     <a href="{{ route('absensi.add') }}" class="btn btn-primary btn-sm">Absen Sekarang!</a>
@@ -45,10 +45,10 @@
                             @foreach ($absensi as $row)
                             <tr>
                                 <td>{{ $no++ }}</td>
-                                <td>{{ $row->transaksi->nidn }}</td>
-                                <td>{{ $row->transaksi->k_jurusan }}</td>
-                                <td>{{ $row->transaksi->kode_mk }}</td>
-                                <td>{{ $row->transaksi->kode_kls }}</td>
+                                <td>{{ $row->nama }}</td>
+                                <td>{{ $row->jurusan }}</td>
+                                <td>{{ $row->nama_matakuliah }}</td>
+                                <td>{{ $row->kelas }}</td>
                                 <td>
                                     <a href="{{ url('absensi/detail/' . $row->barcode) }}" 
                                         class="btn btn-primary btn-sm">

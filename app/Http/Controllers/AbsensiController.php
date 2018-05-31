@@ -13,10 +13,26 @@ class AbsensiController extends Controller
 {
     public function index()
     {
-        $absensi = Absensi::with('mahasiswa', 'transaksi')
-            ->where('nim', Auth::user()->mahasiswa->nim)
-            ->groupBy('barcode')
-            ->orderBy('created_at', 'DESC')->paginate(10);
+        $absensi = Absensi::select('absensi.barcode', 'absensi.nim', 'transaksi.nidn', 'dosen.nama', 'jurusan.jurusan', 'mata_kuliah.nama as nama_matakuliah', 'kelas.kelas')
+            ->join('transaksi', function($join) {
+                $join->on('transaksi.barcode', '=', 'absensi.barcode');
+            })
+            ->join('dosen', function($join){
+                $join->on('transaksi.nidn', '=', 'dosen.nidn');
+            })
+            ->join('jurusan', function($join) {
+                $join->on('transaksi.k_jurusan', '=', 'jurusan.k_jurusan');
+            })
+            ->join('mata_kuliah', function($join) {
+                $join->on('transaksi.kode_mk', '=', 'mata_kuliah.kode_mk');
+            })
+            ->join('kelas', function($join) {
+                $join->on('transaksi.kode_kls', '=', 'kelas.kode_kls');
+            })
+            ->with('mahasiswa', 'transaksi')
+            ->where('absensi.nim', Auth::user()->mahasiswa->nim)
+            ->groupBy('absensi.barcode')
+            ->orderBy('absensi.created_at', 'DESC')->paginate(10);
         return view('absensi.index', compact('absensi'));
     }
 
@@ -55,7 +71,7 @@ class AbsensiController extends Controller
     //request absen
     public function absenRequest()
     {
-        $transaksi = Transaksi::select('transaksi.nidn', 'transaksi.kode_mk', 'mata_kuliah.nama', 'transaksi.k_jurusan')
+        $transaksi = Transaksi::select('transaksi.barcode', 'transaksi.nidn', 'transaksi.kode_mk', 'mata_kuliah.nama', 'transaksi.k_jurusan')
             ->join('mata_kuliah', function($join) {
                 $join->on('transaksi.nidn', '=', 'mata_kuliah.nidn');
                 $join->on('transaksi.kode_mk', '=', 'mata_kuliah.kode_mk');
@@ -79,7 +95,7 @@ class AbsensiController extends Controller
             'status' => false,
             'tanggal' => Carbon::now()
         ]);
-        return redirect(route('absensi.index'));
+        return redirect(route('absensi.index'))->with(['success' => 'Permintaan Telah Dikirim']);
     }
 
     public function verifikasiRequest()

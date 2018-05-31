@@ -97,22 +97,7 @@
                 </li>
                 @endcan
             </ul>
-            <div class="site-menubar-section">
-                <h5>
-                    Progress Bulan Ini
-                    <span class="float-right">80%</span>
-                </h5>
-                <div class="progress progress-xs">
-                    <div class="progress-bar active" style="width: 80%;" role="progressbar"></div>
-                </div>
-                <h5>
-                    Tahunan
-                    <span class="float-right">30%</span>
-                </h5>
-                <div class="progress progress-xs">
-                    <div class="progress-bar progress-bar-warning" style="width: 30%;" role="progressbar"></div>
-                </div>
-            </div>
+            
         </div>
     </div>
 </div>
@@ -122,8 +107,15 @@
     </a>
     <a href="javascript: void(0);" data-placement="top" data-toggle="tooltip" data-original-title="Lock">
         <span class="icon md-eye-off" aria-hidden="true"></span>
-    </a>
-    <a href="#" data-placement="top" data-toggle="tooltip" data-original-title="Logout">
+    </a>              
+    <a 
+        href="{{ route('logout') }}" 
+        onclick="event.preventDefault(); 
+        document.getElementById('logout-form').submit();" 
+        data-placement="top" data-toggle="tooltip" data-original-title="Logout">
         <span class="icon md-power" aria-hidden="true"></span>
     </a>
+    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+        {{ csrf_field() }}
+    </form>
 </div>

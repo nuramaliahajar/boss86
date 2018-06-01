@@ -114,12 +114,21 @@ class AbsensiController extends Controller
 
     public function verifikasiRequest()
     {
-        $absen = Absensi::where('status', 0)
-            ->with('transaksi')
+        $absen = Absensi::select('mata_kuliah.nama', 'mahasiswa.nama as nama_mhs', 'absensi.kehadiran', 'absensi.tanggal', 'absensi.id')
+            ->join('transaksi', function($join) {
+                $join->on('absensi.barcode', '=', 'transaksi.barcode');
+            })
+            ->join('mata_kuliah', function($join) {
+                $join->on('mata_kuliah.kode_mk', '=', 'transaksi.kode_mk');
+            })
+            ->join('mahasiswa', function($join) {
+                $join->on('mahasiswa.nim', '=', 'absensi.nim');
+            })
+            ->where('absensi.status', 0)
             ->whereHas('transaksi', function ($q) {
                 $q->where('nidn', Auth::user()->dosen->nidn);
             })
-            ->orderBy('created_at', 'DESC')->paginate(10);
+            ->orderBy('absensi.created_at', 'DESC')->paginate(10);
         return view('absensi.verifikasi', compact('absen'));
     }
 

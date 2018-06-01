@@ -47,8 +47,8 @@
                             @foreach ($absen as $row)
                             <tr>
                                 <td></td>
-                                <td>{{ $row->transaksi->kode_mk }}</td>
-                                <td>{{ $row->mahasiswa->nama }}</td>
+                                <td>{{ $row->nama }}</td>
+                                <td>{{ $row->nama_mhs }}</td>
                                 <td>
                                     @if ($row->kehadiran == 2)
                                     Izin

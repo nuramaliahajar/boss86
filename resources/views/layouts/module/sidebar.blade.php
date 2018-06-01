@@ -2,7 +2,7 @@
     <div>
         <div>
             <ul class="site-menu" data-plugin="menu">
-                <li class="site-menu-category">UMUM</li>
+                <li class="site-menu-category">{{ Auth::user()->name }}</li>
                 <li class="site-menu-item active">
                     <a class="animsition-link" href="{{ route('home') }}">
                         <i class="site-menu-icon md-view-dashboard" aria-hidden="true"></i>

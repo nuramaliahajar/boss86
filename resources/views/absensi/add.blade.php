@@ -36,7 +36,7 @@
 						<qrcode-reader 
 							:paused="paused"
 							@decode="onDecode" 
-							@locate="onLocate"></qrcode-reader>
+							></qrcode-reader>
 					</div>
 					<div class="form-group">
 						<label for="">Barcode</label>

@@ -26,10 +26,10 @@
                     @endslot
                     
                     @if (session('success'))
-                    @alert(['type' => 'success'])
-                        {{ session('success') }}
-                    @endalert
-                    @endif
+						@component('components.alert', ['type' => 'success'])
+							{!! session('success') !!}
+						@endcomponent
+					@endif
 
                     <table class="table table-hover">
                         <thead>

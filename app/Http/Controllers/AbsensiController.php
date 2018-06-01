@@ -46,6 +46,20 @@ class AbsensiController extends Controller
         $this->validate($request, [
             'barcode' => 'required|exists:transaksi,barcode'
         ]);
+
+        $filter = Absensi::where('barcode', $request->barcode)
+            ->where('nim', Auth::user()->mahasiswa->nim)->orderBy('created_at', 'DESC');
+        if ($filter->get()->count() > 0) {
+            $getFilter = $filter->first()->created_at->format('Y-m-d H:i:s');
+            $now = Carbon::now()->format('Y-m-d H:i:s');
+            
+            $timeFirst  = strtotime($getFilter);
+            $timeSecond = strtotime($now);
+            $differenceInSeconds = $timeSecond - $timeFirst;
+            if ($differenceInSeconds > 6000) {
+                return redirect()->back()->with(['error' => 'Kamu sudah melakukan absen dalam range 100 menit terakhir.']);
+            }
+        }
         
         $absen = Absensi::create([
             'barcode' => $request->barcode,

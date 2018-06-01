@@ -30,6 +30,12 @@
 							{!! session('success') !!}
 						@endcomponent
 					@endif
+
+					@if (session('error'))
+						@component('components.alert', ['type' => 'danger'])
+							{!! session('error') !!}
+						@endcomponent
+					@endif
 					
 					{!! Form::open(['route' => 'absensi.store']) !!}
 					<div class="form-group">

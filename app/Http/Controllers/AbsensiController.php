@@ -170,6 +170,6 @@ class AbsensiController extends Controller
             'kehadiran' => 1,
             'status' => 1
         ]);
-        return redirect()->back()->with(['success' => 'NIM: ' . $absen->nim . ' Telah Diabsen']);
+        return redirect()->back()->with(['success' => 'NIM: ' . $absensi->nim . ' Telah Diabsen']);
     }
 }

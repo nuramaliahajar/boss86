@@ -95,6 +95,12 @@
                         <span class="site-menu-title">VERIFIKASI</span>
                     </a>
                 </li>
+                <li class="site-menu-item has-sub">
+                    <a href="{{ route('absensi.manual') }}">
+                        <i class="site-menu-icon md-card" aria-hidden="true"></i>
+                        <span class="site-menu-title">MANUAL ABSEN</span>
+                    </a>
+                </li>
                 @endcan
             </ul>
             

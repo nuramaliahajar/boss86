@@ -129,4 +129,33 @@ class AbsensiController extends Controller
         
         return redirect()->back()->with(['success' => 'Permintaan mahasiswa ' . $status]);
     }
+
+    //MANUAL ABSEN
+    public function manualAbsen()
+    {
+        $transaksi = Transaksi::select('transaksi.barcode', 'transaksi.nidn', 'transaksi.kode_mk', 'mata_kuliah.nama', 'transaksi.k_jurusan')
+            ->join('mata_kuliah', function($join) {
+                $join->on('transaksi.nidn', '=', 'mata_kuliah.nidn');
+                $join->on('transaksi.kode_mk', '=', 'mata_kuliah.kode_mk');
+            })
+            ->with('jurusan', 'dosen')
+            ->where('transaksi.nidn', Auth::user()->dosen->nidn)->get();
+        return view('absensi.manual', compact('transaksi'));
+    }
+
+    public function storeManual(Request $request)
+    {
+        $this->validate($request, [
+            'barcode' => 'required|exists:transaksi,barcode',
+            'nim' => 'required|exists:mahasiswa,nim'
+        ]);
+
+        $absensi = Absensi::create([
+            'barcode' => $request->barcode,
+            'nim' => $request->nim,
+            'kehadiran' => 1,
+            'status' => 1
+        ]);
+        return redirect()->back()->with(['success' => 'NIM: ' . $absen->nim . ' Telah Diabsen']);
+    }
 }

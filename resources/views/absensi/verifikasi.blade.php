@@ -56,7 +56,7 @@
                                     Sakit
                                     @endif
                                 </td>
-                                <td>{{ $row->tanggal->format('d-m-Y H:i:s') }}</td>
+                                <td>{{ $row->tanggal->toRfc850String() }}</td>
                                 <td>
                                     {!! Form::open(['url' => 'absensi/verifikasi/'. $row->id, 'method' => 'DELETE']) !!}
                                     <input type="hidden" name="alasan" value="1">

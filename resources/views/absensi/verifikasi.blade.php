@@ -18,12 +18,18 @@
 	</div>
 	<div class="page-content" id="dw">
 		<div class="row">
-			<div class="col-md-8">
+			<div class="col-md-12">
 				@component('components.panel')
                     @slot('title')
                     @endslot
 					@slot('addon')
-					@endslot
+                    @endslot
+                    
+                    @if (session('success'))
+                    @alert(['type' => 'success'])
+                        {{ session('success') }}
+                    @endalert
+                    @endif
 
                     <table class="table table-hover">
                         <thead>
@@ -53,7 +59,13 @@
                                 <td>{{ $row->tanggal->format('d-m-Y H:i:s') }}</td>
                                 <td>
                                     {!! Form::open(['url' => 'absensi/verifikasi/'. $row->id, 'method' => 'DELETE']) !!}
-                                    <button class="btn btn-primary btn-sm">Verifikasi</button>
+                                    <input type="hidden" name="alasan" value="1">
+                                    <button class="btn btn-primary btn-sm">Terima</button>
+                                    {!! Form::close() !!}
+                                    <hr>
+                                    {!! Form::open(['url' => 'absensi/verifikasi/'. $row->id, 'method' => 'DELETE']) !!}
+                                    <input type="hidden" name="alasan" value="0">
+                                    <button class="btn btn-danger btn-sm">Tolak</button>
                                     {!! Form::close() !!}
                                 </td>
                             </tr>

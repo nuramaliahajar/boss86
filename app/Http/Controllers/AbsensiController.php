@@ -109,10 +109,24 @@ class AbsensiController extends Controller
         return view('absensi.verifikasi', compact('absen'));
     }
 
-    public function storeVerifikasi($id)
+    public function storeVerifikasi(Request $request, $id)
     {
+        $this->validate($request, [
+            'alasan' => 'required'
+        ]);
+
         $absen = Absensi::find($id);
-        $absen->update(['status' => 1]);
-        return redirect()->back();
+        if ($request->alasan == 1) {
+            $status = 'Diterima';
+            $absen->update(['status' => 1]);
+        } else {
+            $status = 'Ditolak';
+            $absen->update([
+                'kehadiran' => 0,
+                'status' => 1
+            ]);
+        }
+        
+        return redirect()->back()->with(['success' => 'Permintaan mahasiswa ' . $status]);
     }
 }

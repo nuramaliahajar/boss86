@@ -61,12 +61,6 @@
                         <span class="site-menu-title">TRANSAKSI</span>
                     </a>
                 </li>
-                <li class="site-menu-item has-sub">
-                    <a href="{{ route('laporan.index') }}">
-                        <i class="site-menu-icon md-card" aria-hidden="true"></i>
-                        <span class="site-menu-title">LAPORAN</span>
-                    </a>
-                </li>
                 @endcan
                 @can('mahasiswa')
                 <li class="site-menu-item has-sub">
@@ -102,6 +96,12 @@
                     </a>
                 </li>
                 @endcan
+                <li class="site-menu-item has-sub">
+                    <a href="{{ route('laporan.index') }}">
+                        <i class="site-menu-icon md-card" aria-hidden="true"></i>
+                        <span class="site-menu-title">LAPORAN</span>
+                    </a>
+                </li>
             </ul>
             
         </div>

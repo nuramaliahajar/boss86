@@ -83,10 +83,7 @@
                 </div>
 
                 <div class="links">
-                    <a href="#">Manajemen Semester</a>
-                    <a href="#">Dosen</a>
-                    <a href="#">Mahasiswa</a>
-                    <a href="#">User</a>
+                    
                 </div>
             </div>
         </div>

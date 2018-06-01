@@ -109,10 +109,10 @@
 </div>
 <div class="site-menubar-footer">
     <a href="#" class="fold-show" data-placement="top" data-toggle="tooltip" data-original-title="Settings">
-        <span class="icon md-settings" aria-hidden="true"></span>
+        
     </a>
     <a href="javascript: void(0);" data-placement="top" data-toggle="tooltip" data-original-title="Lock">
-        <span class="icon md-eye-off" aria-hidden="true"></span>
+        
     </a>              
     <a 
         href="{{ route('logout') }}" 

@@ -56,7 +56,7 @@ class AbsensiController extends Controller
             $timeFirst  = strtotime($getFilter);
             $timeSecond = strtotime($now);
             $differenceInSeconds = $timeSecond - $timeFirst;
-            if ($differenceInSeconds > 6000) {
+            if ($differenceInSeconds < 6000) {
                 return redirect()->back()->with(['error' => 'Kamu sudah melakukan absen dalam range 100 menit terakhir.']);
             }
         }
